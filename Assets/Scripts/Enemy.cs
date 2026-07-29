@@ -31,13 +31,16 @@ public class Enemy : MonoBehaviour
 
     private void Patrol()
     {
-        if (agent.remainingDistance <= agent.stoppingDistance && !agent.pathPending)
+        if (agent.remainingDistance <= agent.stoppingDistance && (!agent.hasPath || agent.velocity.sqrMagnitude < 0.01f))
         {
-            if (patrolPointIndex >= patrolPoints.Length)
-            {
-                patrolPointIndex = 0;
-            }
+            SetNextPoint();
         }
+
+    }
+
+    private void SetNextPoint()
+    {
         agent.SetDestination(patrolPoints[patrolPointIndex].position);
+        patrolPointIndex = (patrolPointIndex + 1) % patrolPoints.Length;
     }
 }
