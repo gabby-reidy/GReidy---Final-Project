@@ -2,11 +2,13 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    [SerializeField] private Transform player;
+    public GameObject Player;
     [SerializeField] private Rigidbody rb;
 
     [SerializeField] private float speed = 15f;
     [SerializeField] private float lifetime = 5f;
+
+    private Vector3 direction;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -15,13 +17,27 @@ public class Projectile : MonoBehaviour
         {
             rb = GetComponent<Rigidbody>();
         }
-        rb.AddRelativeForce(Vector3.down * speed, ForceMode.Impulse);
+
+        if (Player == null)
+        {
+            Player = GameObject.FindWithTag("Player");
+        }
+        //rb.AddRelativeForce(Vector3.down * speed, ForceMode.Impulse);
         //Destroy(gameObject, lifetime);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        direction = (Player.transform.position - transform.position).normalized;
+        rb.linearVelocity = direction * speed;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+            //TODO: makes player take damage/lose life?
+        }
     }
 }

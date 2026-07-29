@@ -5,15 +5,18 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private Transform player;
+    [SerializeField] private Transform playerTransform;
+    [SerializeField] private GameObject player;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject projectile;
 
+    private Projectile projectileScript;
+
     [SerializeField] private Transform[] patrolPoints;
     private int patrolPointIndex = 0;
-    [SerializeField] private int spawnRate =3;
+    [SerializeField] private int spawnRate = 3;
 
-    private bool gameStart = true; // need to remove - this is to test coroutine
+    private bool gameOver = false; // need to move - this is to test coroutine
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,9 +26,9 @@ public class Enemy : MonoBehaviour
             agent = GetComponent<NavMeshAgent>();
         }
 
-        if (player == null)
+        if (playerTransform == null)
         {
-            player = GameObject.FindWithTag("Player").transform;
+            playerTransform = GameObject.FindWithTag("Player").transform;
         }
 
         StartCoroutine(ShootAtPlayer());
@@ -54,7 +57,7 @@ public class Enemy : MonoBehaviour
 
     IEnumerator ShootAtPlayer()
     {
-        while (gameStart)
+        while (!gameOver)
         {
             Instantiate(projectile, firePoint.position, projectile.transform.rotation);
             yield return new WaitForSeconds(spawnRate);
