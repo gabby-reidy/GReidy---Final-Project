@@ -26,7 +26,10 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    public void SpawnProjectile()
+    /// <summary>
+    /// Spawns projectiles from enemy location and sets player transform in the projectile script
+    /// </summary>
+    private void SpawnProjectile()
     {
         GameObject newProjectile = Instantiate(projectile, firePoint.position, projectile.transform.rotation);
         Projectile projectileScript = newProjectile.GetComponent<Projectile>();
@@ -40,5 +43,10 @@ public class SpawnManager : MonoBehaviour
             SpawnProjectile();
             yield return new WaitForSeconds(spawnRate);
         }
+    }
+
+    private void SpawnPowerup()
+    {
+
     }
 }

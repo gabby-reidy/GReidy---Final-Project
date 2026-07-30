@@ -30,11 +30,12 @@ public class Enemy : MonoBehaviour
             SetNextPoint();
         }
     }
-
+    /// <summary>
+    /// Moves enemy between waypoints in the array
+    /// </summary>
     private void SetNextPoint()
     {
         agent.SetDestination(patrolPoints[patrolPointIndex].position);
         patrolPointIndex = (patrolPointIndex + 1) % patrolPoints.Length;
     }
-
 }
