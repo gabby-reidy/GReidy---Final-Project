@@ -1337,7 +1337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1288721420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1350,7 +1350,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af46a732bdd3b934da1a5ac9b71c1877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
-  player: {fileID: 766417834}
+  PlayerRef: {fileID: 766417840}
+  firePoint: {fileID: 2133683641}
+  projectile: {fileID: 6362079666413271699, guid: 7fb26d0b9d65f394fa72657ddee5ee21, type: 3}
+  spawnRate: 3
 --- !u!4 &1288721421
 Transform:
   m_ObjectHideFlags: 0
@@ -1769,14 +1772,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   agent: {fileID: 1559256324}
-  playerTransform: {fileID: 0}
-  player: {fileID: 766417834}
-  firePoint: {fileID: 2133683641}
-  projectile: {fileID: 6362079666413271699, guid: 7fb26d0b9d65f394fa72657ddee5ee21, type: 3}
   patrolPoints:
   - {fileID: 951763190}
   - {fileID: 1775913959}
-  spawnRate: 3
 --- !u!195 &1559256324
 NavMeshAgent:
   m_ObjectHideFlags: 0

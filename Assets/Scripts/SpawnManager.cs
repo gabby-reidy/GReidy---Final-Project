@@ -4,7 +4,6 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public Transform PlayerRef;
-    public bool isGameOver = false; // move this to gamemanager soon
 
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject projectile;
@@ -36,7 +35,7 @@ public class SpawnManager : MonoBehaviour
 
     IEnumerator ShootProjectilesAtPlayer()
     {
-        while (!isGameOver)
+        while (!GameManager.GameOver)
         {
             SpawnProjectile();
             yield return new WaitForSeconds(spawnRate);
