@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public GameObject Player;
+    public Transform Player;
     [SerializeField] private Rigidbody rb;
 
     [SerializeField] private float speed = 15f;
     [SerializeField] private float lifetime = 5f;
 
     private Vector3 direction;
+    private SpawnManager spawnManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -17,18 +18,11 @@ public class Projectile : MonoBehaviour
         {
             rb = GetComponent<Rigidbody>();
         }
-
-        if (Player == null)
-        {
-            Player = GameObject.FindWithTag("Player");
-        }
-        //rb.AddRelativeForce(Vector3.down * speed, ForceMode.Impulse);
-        //Destroy(gameObject, lifetime);
     }
 
     private void Update()
     {
-        direction = (Player.transform.position - transform.position).normalized;
+        direction = (Player.position - transform.position).normalized;
         rb.linearVelocity = direction * speed;
     }
 

@@ -1,17 +1,24 @@
+using System.Collections;
 using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] private GameObject player;
-    private Projectile projectile;
+    public Transform PlayerRef;
+    public bool isGameOver = false; // move this to gamemanager soon
+
+    [SerializeField] private Transform firePoint;
+    [SerializeField] private GameObject projectile;
+    [SerializeField] private int spawnRate = 3;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        if (player == null)
+        if (PlayerRef == null)
         {
-            player = GameObject.FindWithTag("Player");
+            PlayerRef = GameObject.FindWithTag("Player").transform;
         }
+
+        StartCoroutine(ShootProjectilesAtPlayer());
     }
 
     // Update is called once per frame
@@ -20,5 +27,19 @@ public class SpawnManager : MonoBehaviour
         
     }
 
-    //// TODO: Move projectile spawning to this script and fix error with player gameobject on the prefab
+    public void SpawnProjectile()
+    {
+        GameObject newProjectile = Instantiate(projectile, firePoint.position, projectile.transform.rotation);
+        Projectile projectileScript = newProjectile.GetComponent<Projectile>();
+        projectileScript.Player = PlayerRef;
+    }
+
+    IEnumerator ShootProjectilesAtPlayer()
+    {
+        while (!isGameOver)
+        {
+            SpawnProjectile();
+            yield return new WaitForSeconds(spawnRate);
+        }
+    }
 }
