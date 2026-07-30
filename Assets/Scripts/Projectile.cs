@@ -9,7 +9,6 @@ public class Projectile : MonoBehaviour
     [SerializeField] private float lifetime = 5f;
 
     private Vector3 direction;
-    private SpawnManager spawnManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -18,11 +17,12 @@ public class Projectile : MonoBehaviour
         {
             rb = GetComponent<Rigidbody>();
         }
+
+        direction = (Player.position - transform.position).normalized;
     }
 
     private void Update()
     {
-        direction = (Player.position - transform.position).normalized;
         rb.linearVelocity = direction * speed;
     }
 
