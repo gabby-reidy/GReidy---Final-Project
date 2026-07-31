@@ -8,9 +8,8 @@ public class GameManager : MonoBehaviour
     public static int MaxLives = 3;
     public int CurrentLives;
 
+    private LifeManager lifeManager;
     private Health health;
-
-    [SerializeField] private Image[] lifeIcons;
 
     private void Awake()
     {
@@ -27,7 +26,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameOver = false;
-        CurrentLives = MaxLives;
     }
 
     // Update is called once per frame
@@ -36,11 +34,43 @@ public class GameManager : MonoBehaviour
         
     }
 
-    public void UpdateLifeCount(int currentLives)
+    /// <summary>
+    /// Sets active scene's LifeManager to this GameManager
+    /// </summary>
+    /// <param name="manager"></param>
+    public void SetActiveLifeManager(LifeManager manager)
     {
-        for (int i = 0; i < lifeIcons.Length; i++)
+        lifeManager = manager;
+    }
+    /// <summary>
+    /// Clears reference to LifeManager
+    /// </summary>
+    /// <param name="manager"></param>
+    public void ClearActiveLifeManager(LifeManager manager)
+    {
+        if (lifeManager == manager)
         {
-            lifeIcons[i].enabled = (i < currentLives);
+            lifeManager = null;
         }
+    }
+
+    public void LoseLife()
+    {
+        CurrentLives--;
+        if (lifeManager != null)
+        {
+            lifeManager.UpdateLifeCount(CurrentLives);
+        }
+
+        if (CurrentLives <= 0)
+        {
+            CurrentLives = 0;
+            //game over
+        }
+    }
+
+    public void ResetLives()
+    {
+        CurrentLives = MaxLives;
     }
 }
