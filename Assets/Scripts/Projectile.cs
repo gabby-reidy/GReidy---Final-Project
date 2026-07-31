@@ -33,5 +33,10 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
             //TODO: makes player take damage/lose life?
         }
+        
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
