@@ -31,6 +31,8 @@ public class Projectile : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             Destroy(gameObject);
+            int currentLives = GameManager.Instance.CurrentLives--;
+            GameManager.Instance.UpdateLifeCount(currentLives);
             //TODO: makes player take damage/lose life?
         }
         

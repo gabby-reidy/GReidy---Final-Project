@@ -18,7 +18,7 @@ public class SlideshowManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1"))  // TODO: Add buttons to slides and do on click method instead
         {
             GoToNextSlide();
         }
