@@ -4,6 +4,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private Animator animator;
 
     private Vector3 movement;
 
@@ -32,6 +33,14 @@ public class PlayerController : MonoBehaviour
     private void Move()
     {
         rb.linearVelocity = movement.normalized * moveSpeed;
+        if (movement.x != 0 || movement.z != 0)
+        {
+            animator.SetBool("isWalking", true);
+        }
+        else if (movement.x == 0 && movement.z == 0)
+        {
+            animator.SetBool("isWalking", false);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
