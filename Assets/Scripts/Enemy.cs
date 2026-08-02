@@ -5,8 +5,9 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent agent;
-    [SerializeField] private Transform[] patrolPoints;
+    private Transform[] patrolPoints;
     private int patrolPointIndex = 0;
+    private bool isInitialized;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -20,7 +21,23 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isInitialized)
+        {
+            return;
+        }
+
         Patrol();
+    }
+
+    public void InitializePatrol(Transform[] points)
+    {
+        this.patrolPoints = points;
+        if (patrolPoints != null && patrolPoints.Length > 0)
+        {
+            patrolPointIndex = 0;
+            isInitialized = true;
+            SetNextPoint();
+        }
     }
 
     private void Patrol()
@@ -35,6 +52,11 @@ public class Enemy : MonoBehaviour
     /// </summary>
     private void SetNextPoint()
     {
+        if (patrolPoints == null || patrolPoints.Length == 0)
+        {
+            return;
+        }
+
         agent.SetDestination(patrolPoints[patrolPointIndex].position);
         patrolPointIndex = (patrolPointIndex + 1) % patrolPoints.Length;
     }

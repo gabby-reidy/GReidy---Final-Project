@@ -1,12 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     public static bool GameOver;
     public static int MaxLives = 3;
-    public int CurrentLives;
+    public int CurrentLives = 3;
 
     private LifeManager lifeManager;
     private Health health;
@@ -26,6 +27,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         GameOver = false;
+        ResetLives();
     }
 
     // Update is called once per frame

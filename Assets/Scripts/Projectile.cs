@@ -33,8 +33,7 @@ public class Projectile : MonoBehaviour
             Destroy(gameObject);
             if (GameManager.Instance != null)
             {
-                int currentLives = GameManager.Instance.CurrentLives--;
-                //GameManager.Instance.UpdateLifeCount(currentLives);
+                GameManager.Instance.LoseLife();
             }
         }
         
