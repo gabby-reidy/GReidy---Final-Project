@@ -7,10 +7,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private NavMeshAgent agent;
     private Transform[] patrolPoints;
     private int patrolPointIndex = 0;
-    private bool isInitialized;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+
+    void Awake()
     {
         if (agent == null)
         {
@@ -18,41 +17,55 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (!isInitialized)
-        {
-            return;
-        }
 
-        Patrol();
-    }
-
-    public void InitializePatrol(Transform[] points)
+    public void InitializePatrol(Transform[] points, Vector3 spawnPosition)
     {
         this.patrolPoints = points;
+
+        if (agent != null)
+        {
+            agent.Warp(spawnPosition);
+        }
+
         if (patrolPoints != null && patrolPoints.Length > 0)
         {
             patrolPointIndex = 0;
-            isInitialized = true;
-            SetNextPoint();
+            StartCoroutine(PatrolRoutine());
         }
     }
 
-    private void Patrol()
+    IEnumerator PatrolRoutine()
     {
-        if (agent.remainingDistance <= agent.stoppingDistance && (!agent.hasPath || agent.velocity.sqrMagnitude < 0.01f))
+        yield return new WaitForSeconds(0.1f);
+        SetNextPoint();
+
+        while (true)
         {
-            SetNextPoint();
+            yield return new WaitForSeconds(0.2f);
+
+            if (agent.isOnNavMesh && !agent.pathPending)
+            {
+                if (agent.remainingDistance <= agent.stoppingDistance)
+                {
+                    if (!agent.hasPath || agent.velocity.sqrMagnitude < 0.01f)
+                    {
+                        SetNextPoint();
+                    }
+                }
+            }
         }
     }
+
     /// <summary>
     /// Moves enemy between waypoints in the array
     /// </summary>
     private void SetNextPoint()
     {
         if (patrolPoints == null || patrolPoints.Length == 0)
+        {
+            return;
+        }
+        if (!agent.isOnNavMesh)
         {
             return;
         }
