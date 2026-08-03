@@ -7,29 +7,19 @@ public class EnemySpawner : MonoBehaviour
     [System.Serializable]
     public struct SpawnLocations
     {
-        public string Name; // just for organizing in inspector? maybe get rid of since its not actually being called
         public Transform SpawnPoint;
         public Transform[] PatrolPoints;
     }
-    [SerializeField] private float spawnTimer = 10f;
+    [SerializeField] private float spawnTimer = 6f;
     [SerializeField] private int maxEnemies = 5;
-    // List of enemy prefabs - need to add additional enemies to prefab folder 
-    [SerializeField] private List<GameObject> enemyPrefabs = new List<GameObject>();
-    // List of spawn locations for randomization
-    [SerializeField] private List<SpawnLocations> spawnZones = new List<SpawnLocations>();
-    // List to check for active enemies in the scene - maybe a better way to do this? idk
+    [SerializeField] private List<GameObject> enemyPrefabs = new List<GameObject>();  // could these be arrays? since im not resizing these?
+    [SerializeField] private List<SpawnLocations> spawnZones = new List<SpawnLocations>(); // or should everything be a list to make it easier idk - look it up
     private List<GameObject> activeEnemies = new List<GameObject>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         StartCoroutine(SpawnEnemiesOnTimer());
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private IEnumerator SpawnEnemiesOnTimer()
