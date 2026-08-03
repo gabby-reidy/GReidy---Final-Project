@@ -14,7 +14,6 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform firePoint;
 
 
-
     void Awake()
     {
         if (agent == null)

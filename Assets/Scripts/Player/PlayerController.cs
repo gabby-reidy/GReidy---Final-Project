@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     {
         if (rb == null)
         {
-            GetComponent<Rigidbody>();
+            rb = GetComponent<Rigidbody>();
         }
     }
 

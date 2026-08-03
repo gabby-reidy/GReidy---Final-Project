@@ -193,6 +193,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   agent: {fileID: 3118203205398293573}
+  projectilePrefab: {fileID: 6362079666413271699, guid: 7fb26d0b9d65f394fa72657ddee5ee21, type: 3}
+  firePoint: {fileID: 0}
 --- !u!54 &1187396024709407210
 Rigidbody:
   m_ObjectHideFlags: 0

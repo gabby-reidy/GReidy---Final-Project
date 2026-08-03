@@ -26,8 +26,6 @@ public class EnemySpawner : MonoBehaviour
     {
         while (!GameManager.GameOver)
         {
-            activeEnemies.RemoveAll(enemy => enemy == null);
-
             if (activeEnemies.Count < maxEnemies && spawnZones.Count > 0 && enemyPrefabs.Count > 0)
             {
                 SpawnRandomEnemy();
