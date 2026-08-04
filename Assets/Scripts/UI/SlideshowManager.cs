@@ -9,22 +9,7 @@ public class SlideshowManager : MonoBehaviour
 
     private int currentIndex = 0;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetButtonDown("Fire1"))  // TODO: Add buttons to slides and do on click method instead
-        {
-            GoToNextSlide();
-        }
-    }
-
-    private void GoToNextSlide()
+    public void GoToNextSlide()
     {
         currentIndex++;
 
