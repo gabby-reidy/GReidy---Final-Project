@@ -9,7 +9,7 @@ public class PlayerShooting : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        //
+        
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void Shoot()
     {
-        Vector3 spawnPos = transform.position + (transform.rotation * offset);
+        Vector3 spawnPos = transform.position + offset;
         GameObject projectile = Instantiate(projectilePrefab, spawnPos, projectilePrefab.transform.rotation);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         if (rb != null)
