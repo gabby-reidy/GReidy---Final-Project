@@ -32,7 +32,7 @@ public class SpawnManager : MonoBehaviour
     private void SpawnProjectile()
     {
         GameObject newProjectile = Instantiate(projectile, firePoint.position, projectile.transform.rotation);
-        Projectile projectileScript = newProjectile.GetComponent<Projectile>();
+        EnemyProjectile projectileScript = newProjectile.GetComponent<EnemyProjectile>();
         projectileScript.Player = PlayerRef;
     }
 
