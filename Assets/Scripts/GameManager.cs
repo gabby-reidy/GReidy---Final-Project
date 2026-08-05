@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public int CurrentLives = 3;
 
     private LifeManager lifeManager;
-    private Health health;
+    private EnemyHealth enemyHealth;
 
     private void Awake()
     {
@@ -68,5 +68,10 @@ public class GameManager : MonoBehaviour
     public void ResetLives()
     {
         CurrentLives = MaxLives;
+    }
+
+    public EnemyHealth GetEnemyHealth()
+    {
+        return enemyHealth;
     }
 }

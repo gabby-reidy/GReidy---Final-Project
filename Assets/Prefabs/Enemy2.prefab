@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4186810118541466356}
   - component: {fileID: 5293563291344166427}
   - component: {fileID: 7069450410652695026}
+  - component: {fileID: -1173348140839449189}
   m_Layer: 7
   m_Name: Enemy2
   m_TagString: Enemy
@@ -122,6 +123,18 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1.6
   m_Center: {x: -0.47, y: 0, z: 0}
+--- !u!114 &-1173348140839449189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 856164601700053506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c5d7e54679ad44694a2901185213e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
 --- !u!1 &1211719394021140499
 GameObject:
   m_ObjectHideFlags: 0
