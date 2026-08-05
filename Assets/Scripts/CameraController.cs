@@ -6,8 +6,8 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private float minX;
     [SerializeField] private float maxX;
-    [SerializeField] private float minY;
-    [SerializeField] private float maxY;
+    [SerializeField] private float minZ;
+    [SerializeField] private float maxZ;
     [SerializeField] private Camera cam;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,9 +19,27 @@ public class CameraController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+
+    void LateUpdate()
     {
-        
+        if (playerTransform == null)
+        {
+            return;
+        }
+
+        float camHeight = cam.orthographicSize;
+        float camWidth = camHeight * cam.aspect;
+
+        float minCamX = minX + camWidth;
+        float maxCamX = maxX - camWidth;
+        float minCamZ = minZ + camHeight;
+        float maxCamZ = maxZ - camHeight;
+
+        Vector3 desiredPosition = new Vector3(playerTransform.position.x, transform.position.y, playerTransform.position.z);
+
+        float clampedX = Mathf.Clamp(desiredPosition.x, minCamX, maxCamX);
+        float clampedZ = Mathf.Clamp(desiredPosition.z, minCamZ, maxCamZ);
+
+        transform.position = new Vector3(clampedX, transform.position.y, clampedZ);
     }
 }

@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -558,11 +559,11 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -0.17110266, y: 76.58695, z: -0.5983607}
-  m_LocalScale: {x: 0.8196721, y: 0.38022813, z: 2.173913}
+  m_LocalPosition: {x: 0, y: 36.23, z: -0.8000001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 766417840}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -608,6 +609,24 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e27df059cfbe41445bb08e03f5c0d6b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  playerTransform: {fileID: 766417840}
+  minX: -40
+  maxX: 40
+  minZ: -58
+  maxZ: 58
+  cam: {fileID: 330585545}
 --- !u!1 &352525207
 GameObject:
   m_ObjectHideFlags: 0
@@ -693,7 +712,7 @@ Transform:
   m_GameObject: {fileID: 352525207}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 7.1, y: 1, z: -95.1}
+  m_LocalPosition: {x: 7.1, y: 1, z: -107.2}
   m_LocalScale: {x: 10.197252, y: 10.19725, z: 10.19725}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1383,7 +1402,7 @@ GameObject:
   - component: {fileID: 751358212}
   - component: {fileID: 751358211}
   m_Layer: 0
-  m_Name: AudioSource
+  m_Name: Level Music
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1651,12 +1670,11 @@ Transform:
   m_GameObject: {fileID: 766417834}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.45, y: 1, z: -0.07}
+  m_LocalPosition: {x: 0.45, y: 1, z: -1.1}
   m_LocalScale: {x: 2.63, y: 0.46, z: 1.22}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 666846789485938030}
-  - {fileID: 330585546}
   - {fileID: 1143316876}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1777,8 +1795,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifierVolume
   m_SerializedVersion: 0
-  m_Size: {x: 90.01619, y: 3, z: 20.867882}
-  m_Center: {x: -0.35985374, y: 1, z: -12.246082}
+  m_Size: {x: 90.01619, y: 3, z: 11.470627}
+  m_Center: {x: -0.35985565, y: 1, z: -7.547455}
   m_Area: 1
   m_AffectedAgents: ffffffff
 --- !u!1 &832575517
@@ -2409,8 +2427,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifierVolume
   m_SerializedVersion: 0
-  m_Size: {x: 89.46734, y: 3, z: 20.867882}
-  m_Center: {x: -0.085430145, y: 1, z: -12.246082}
+  m_Size: {x: 89.46734, y: 3, z: 8.046455}
+  m_Center: {x: -0.085430145, y: 1, z: -18.656796}
   m_Area: 1
   m_AffectedAgents: ffffffff
 --- !u!4 &1376672402
@@ -2504,8 +2522,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifierVolume
   m_SerializedVersion: 0
-  m_Size: {x: 93.42746, y: 3, z: 11.097933}
-  m_Center: {x: -0.6102123, y: 1, z: 8.597177}
+  m_Size: {x: 122.83281, y: 3, z: 11.097933}
+  m_Center: {x: 1.7866898, y: 1, z: 8.597177}
   m_Area: 1
   m_AffectedAgents: ffffffff
 --- !u!1 &1471794545
@@ -2819,7 +2837,7 @@ Transform:
   m_GameObject: {fileID: 1621511365}
   serializedVersion: 2
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 7.1, y: 1, z: 18.2}
+  m_LocalPosition: {x: 7.1, y: 1, z: 28}
   m_LocalScale: {x: 10.197252, y: 10.19725, z: 10.19725}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -3028,8 +3046,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshModifierVolume
   m_SerializedVersion: 0
-  m_Size: {x: 93.42746, y: 3, z: 11.097933}
-  m_Center: {x: -0.6102123, y: 1, z: 8.597177}
+  m_Size: {x: 124.36769, y: 3, z: 11.097933}
+  m_Center: {x: 1.7782803, y: 1, z: 8.597177}
   m_Area: 1
   m_AffectedAgents: ffffffff
 --- !u!1 &1824894016
@@ -3396,18 +3414,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 766417840}
     m_Modifications:
     - target: {fileID: 893012389241938791, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.8196721
-      objectReference: {fileID: 0}
-    - target: {fileID: 893012389241938791, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.38022813
-      objectReference: {fileID: 0}
-    - target: {fileID: 893012389241938791, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 2.173913
-      objectReference: {fileID: 0}
-    - target: {fileID: 893012389241938791, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.038022812
       objectReference: {fileID: 0}
@@ -3449,67 +3455,29 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1245360370102093786, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
       propertyPath: m_Name
-      value: testplayer
+      value: Player Sprite
       objectReference: {fileID: 0}
-    - target: {fileID: 1245360370102093786, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3609295345695833457, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 2aec5f3c41407fe468d9f08f553120a0, type: 3}
-    - target: {fileID: 7528957861412085537, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
-      propertyPath: moveSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7528957861412085537, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
-    - {fileID: 7093835846405703064, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1245360370102093786, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 666846789485938031}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
---- !u!1 &666846789485938016 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1245360370102093786, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
-  m_PrefabInstance: {fileID: 666846789485938015}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &666846789485938030 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 893012389241938791, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
   m_PrefabInstance: {fileID: 666846789485938015}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &666846789485938031
+--- !u!95 &666846789485938031 stripped
 Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 5729141321600424252, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
+  m_PrefabInstance: {fileID: 666846789485938015}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 666846789485938016}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1e66ff33c35f4694d86f47ec322dc60e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 410087041}
+  - {fileID: 330585546}
   - {fileID: 832575519}
   - {fileID: 1281801657}
   - {fileID: 531554846}

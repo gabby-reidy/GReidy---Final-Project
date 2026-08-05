@@ -1017,6 +1017,10 @@ MonoBehaviour:
   audioSource: {fileID: 869597714}
   playButtonSFX: {fileID: 8300000, guid: 918824309fd880c4da4581b86fa58365, type: 3}
   settingsButtonSFX: {fileID: 8300000, guid: 1e2176e409b94be489518583cbeabeae, type: 3}
+  playerProjectileSFX: {fileID: 8300000, guid: 9a4767f5afb0f534287c0186b6dfa51a, type: 3}
+  enemyProjectileSFX: {fileID: 0}
+  loseLifeSFX: {fileID: 8300000, guid: e9bb6abb46f48554e8e8eb1f4e0353f9, type: 3}
+  enemySFX: []
 --- !u!4 &869597713
 Transform:
   m_ObjectHideFlags: 0

@@ -8,9 +8,15 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioMixer AudioMixer;
     [SerializeField] private AudioSource audioSource;
 
-    [Header("SFX")]
+    [Header("UI SFX")]
     [SerializeField] private AudioClip playButtonSFX;
     [SerializeField] private AudioClip settingsButtonSFX;
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip playerProjectileSFX;
+    [SerializeField] private AudioClip enemyProjectileSFX;
+    [SerializeField] private AudioClip loseLifeSFX;
+    [SerializeField] private AudioClip[] enemySFX;
 
     void Awake()
     {
