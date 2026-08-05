@@ -30,12 +30,6 @@ public class GameManager : MonoBehaviour
         ResetLives();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     /// <summary>
     /// Sets active scene's LifeManager to this GameManager
     /// </summary>

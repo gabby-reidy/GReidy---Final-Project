@@ -1,16 +1,40 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static AudioManager Instance;
+
+    [SerializeField] private AudioMixer AudioMixer;
+    [SerializeField] private AudioSource audioSource;
+
+    [Header("SFX")]
+    [SerializeField] private AudioClip playButtonSFX;
+    [SerializeField] private AudioClip settingsButtonSFX;
+
+    void Awake()
     {
-        
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        audioSource = GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetVolume(float volume)
     {
-        
+        AudioMixer.SetFloat("masterVolume", volume);
+    }
+    public void PlayButtonSFX()
+    {
+        audioSource.PlayOneShot(playButtonSFX);
+    }
+
+    public void SettingsButtonSFX()
+    {
+        audioSource.PlayOneShot(settingsButtonSFX);
     }
 }
