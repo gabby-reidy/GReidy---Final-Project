@@ -14,6 +14,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("SFX")]
     [SerializeField] private AudioClip playerProjectileSFX;
+    [SerializeField] private AudioClip playerProjectileBurstSFX;
     [SerializeField] private AudioClip enemyProjectileSFX;
     [SerializeField] private AudioClip loseLifeSFX;
     [SerializeField] private AudioClip[] enemySFX;
@@ -42,5 +43,15 @@ public class AudioManager : MonoBehaviour
     public void SettingsButtonSFX()
     {
         audioSource.PlayOneShot(settingsButtonSFX);
+    }
+
+    public void PlayerProjectileSFX()
+    {
+        audioSource.PlayOneShot(playerProjectileSFX);
+    }
+
+    public void PlayerProjectileBurstSFX()
+    {
+        AudioSource.PlayClipAtPoint(playerProjectileBurstSFX, Vector3.zero);
     }
 }
