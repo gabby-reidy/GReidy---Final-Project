@@ -46,5 +46,13 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision.gameObject.name);
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.LoseLife();
+            }
+        }
     }
 }

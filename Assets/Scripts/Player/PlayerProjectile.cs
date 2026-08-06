@@ -15,7 +15,13 @@ public class PlayerProjectile : MonoBehaviour
         {
             Destroy(gameObject);
             AudioManager.Instance.PlayerProjectileBurstSFX();
+            enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
             enemyHealth.TakeDamage(projectileDamage);
+        }
+
+        if (other.gameObject.CompareTag("Obstacle"))
+        {
+            Destroy(gameObject);
         }
     }
 }
