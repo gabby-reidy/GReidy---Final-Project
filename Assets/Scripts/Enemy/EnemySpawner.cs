@@ -14,8 +14,8 @@ public class EnemySpawner : MonoBehaviour
     }
     [SerializeField] private float spawnTimer = 6f;
     [SerializeField] private int maxEnemies = 5;
-    [SerializeField] private List<GameObject> enemyPrefabs = new List<GameObject>();  // could these be arrays? since im not resizing these?
-    [SerializeField] private List<SpawnLocations> spawnZones = new List<SpawnLocations>(); // or should everything be a list to make it easier idk - look it up
+    [SerializeField] private GameObject[] enemyPrefabs;
+    [SerializeField] private SpawnLocations[] spawnZones;
     private List<GameObject> activeEnemies = new List<GameObject>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -32,7 +32,7 @@ public class EnemySpawner : MonoBehaviour
     {
         while (!GameManager.GameOver)
         {
-            if (activeEnemies.Count < maxEnemies && spawnZones.Count > 0 && enemyPrefabs.Count > 0)
+            if (activeEnemies.Count < maxEnemies && spawnZones.Length > 0 && enemyPrefabs.Length > 0)
             {
                 SpawnRandomEnemy();
             }
@@ -42,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnRandomEnemy()
     {
-        int spawnZoneIndex = Random.Range(0, spawnZones.Count);
+        int spawnZoneIndex = Random.Range(0, spawnZones.Length);
         SpawnLocations randomZone = spawnZones[spawnZoneIndex];
 
         if (randomZone.SpawnPoint == null)
@@ -50,7 +50,7 @@ public class EnemySpawner : MonoBehaviour
             return;
         }
 
-        int enemyIndex = Random.Range(0, enemyPrefabs.Count);
+        int enemyIndex = Random.Range(0, enemyPrefabs.Length);
         GameObject randomPrefab = enemyPrefabs[enemyIndex];
 
         GameObject newEnemy = Instantiate(randomPrefab, Vector3.zero, randomPrefab.transform.rotation);
