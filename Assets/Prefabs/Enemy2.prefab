@@ -100,8 +100,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   agent: {fileID: 4186810118541466356}
-  projectilePrefab: {fileID: 0}
-  firePoint: {fileID: 0}
+  projectilePrefab: {fileID: 6362079666413271699, guid: 7fb26d0b9d65f394fa72657ddee5ee21, type: 3}
+  firePoint: {fileID: 6207202040894614367}
+  projectileSpawnRate: 3
+  PlayerTransform: {fileID: 0}
 --- !u!135 &7069450410652695026
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -135,6 +137,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c5d7e54679ad44694a2901185213e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  EnemyHP: 5
 --- !u!1 &1211719394021140499
 GameObject:
   m_ObjectHideFlags: 0

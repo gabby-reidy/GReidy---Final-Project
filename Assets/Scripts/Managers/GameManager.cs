@@ -9,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static int MaxLives = 3;
     public int CurrentLives = 3;
 
-    private LifeManager lifeManager;
+    private PlayerLifeManager playerLifeManager;
     private EnemyHealth enemyHealth;
 
     private void Awake()
@@ -34,28 +34,28 @@ public class GameManager : MonoBehaviour
     /// Sets active scene's LifeManager to this GameManager
     /// </summary>
     /// <param name="manager"></param>
-    public void SetActiveLifeManager(LifeManager manager)
+    public void SetActiveLifeManager(PlayerLifeManager manager)
     {
-        lifeManager = manager;
+        playerLifeManager = manager;
     }
     /// <summary>
     /// Clears reference to LifeManager
     /// </summary>
     /// <param name="manager"></param>
-    public void ClearActiveLifeManager(LifeManager manager)
+    public void ClearActiveLifeManager(PlayerLifeManager manager)
     {
-        if (lifeManager == manager)
+        if (playerLifeManager == manager)
         {
-            lifeManager = null;
+            playerLifeManager = null;
         }
     }
 
     public void LoseLife()
     {
         CurrentLives--;
-        if (lifeManager != null)
+        if (playerLifeManager != null)
         {
-            lifeManager.UpdateLifeCount(CurrentLives);
+            playerLifeManager.UpdateLifeCount(CurrentLives);
         }
 
         if (CurrentLives <= 0)

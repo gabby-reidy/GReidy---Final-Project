@@ -1,9 +1,11 @@
-using UnityEngine;
+ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public Transform PlayerTransform;
+
     [System.Serializable]
     public struct SpawnLocations
     {
@@ -19,6 +21,10 @@ public class EnemySpawner : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (PlayerTransform == null)
+        {
+            PlayerTransform = GameObject.FindWithTag("Player").transform;
+        }
         StartCoroutine(SpawnEnemiesOnTimer());
     }
 
@@ -53,6 +59,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (enemyScript != null)
         {
+            enemyScript.PlayerTransform = PlayerTransform;
             enemyScript.InitializePatrol(randomZone.PatrolPoints, randomZone.SpawnPoint.position);
         }
     }

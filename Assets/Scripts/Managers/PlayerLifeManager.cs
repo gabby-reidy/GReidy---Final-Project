@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class LifeManager : MonoBehaviour
+public class PlayerLifeManager : MonoBehaviour
 {
     [SerializeField] private Image[] lifeIcons;
 

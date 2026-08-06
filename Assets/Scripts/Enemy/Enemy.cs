@@ -12,7 +12,9 @@ public class Enemy : MonoBehaviour
     [Header("Attack Info")]
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform firePoint;
+    [SerializeField] private float projectileSpawnRate = 3f;
 
+    public Transform PlayerTransform;
 
     void Awake()
     {
@@ -40,12 +42,13 @@ public class Enemy : MonoBehaviour
         {
             patrolPointIndex = 0;
             StartCoroutine(PatrolRoutine());
+            StartCoroutine(ShootProjectilesAtPlayer());
         }
     }
 
-    IEnumerator PatrolRoutine()
+    private IEnumerator PatrolRoutine()
     {
-        while (true)
+        while (!GameManager.GameOver)
         {
             yield return new WaitForSeconds(0.2f);
 
@@ -75,5 +78,23 @@ public class Enemy : MonoBehaviour
 
         agent.SetDestination(patrolPoints[patrolPointIndex].position);
         patrolPointIndex = (patrolPointIndex + 1) % patrolPoints.Length;
+    }
+
+    private IEnumerator ShootProjectilesAtPlayer()
+    {
+        while (!GameManager.GameOver)
+        {
+            yield return new WaitForSeconds(0.25f);
+
+            SpawnProjectile();
+            yield return new WaitForSeconds(projectileSpawnRate);
+        }
+    }
+
+    private void SpawnProjectile()
+    {
+        GameObject newProjectile = Instantiate(projectilePrefab, firePoint.position, projectilePrefab.transform.rotation);
+        EnemyProjectile projectileScript = newProjectile.GetComponent<EnemyProjectile>();
+        projectileScript.Player = PlayerTransform;
     }
 }
