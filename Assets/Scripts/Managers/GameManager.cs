@@ -77,6 +77,8 @@ public class GameManager : MonoBehaviour
 
     public void GoBackToMainMenu()
     {
+        Time.timeScale = 1f;
+        ResetLives();
         SceneManager.LoadScene("MainMenu");
     }
 }

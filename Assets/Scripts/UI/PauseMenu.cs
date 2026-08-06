@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool GameIsPaused = false;
+    public static bool GameIsPaused = false; // if i dont end up using this anywhere else then make it private
     [SerializeField] GameObject pauseMenu;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -33,7 +33,7 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
     }
 
-    private void ResumeGame()
+    public void ResumeGame()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;

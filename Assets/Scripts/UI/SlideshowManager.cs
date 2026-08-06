@@ -19,7 +19,7 @@ public class SlideshowManager : MonoBehaviour
         }
         else
         {
-            SceneManager.LoadScene("LevelOne");
+            SceneManager.LoadScene("LevelOne"); // need to figure out how to change music again
         }
     }
 
