@@ -22,6 +22,14 @@ public class PlayerProjectile : MonoBehaviour
         if (other.gameObject.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
+            AudioManager.Instance.PlayerProjectileBurstSFX();
+        }
+
+        if (other.gameObject.CompareTag("Projectile"))
+        {
+            Destroy(other.gameObject);
+            Destroy(gameObject);
+            AudioManager.Instance.PlayerProjectileBurstSFX();
         }
     }
 }

@@ -116,7 +116,7 @@ Transform:
   m_GameObject: {fileID: 7200615643959531782}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.68, y: 0.5, z: -0.68}
+  m_LocalPosition: {x: 0.68, y: 0.5, z: -0.483}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -196,7 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   agent: {fileID: 3118203205398293573}
   projectilePrefab: {fileID: 6362079666413271699, guid: 7fb26d0b9d65f394fa72657ddee5ee21, type: 3}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 9026689440314917303}
 --- !u!54 &1187396024709407210
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -223,7 +223,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!135 &7931391929662057856
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -243,12 +243,13 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.66
-  m_Center: {x: 0, y: 0.71144176, z: 0}
+  m_Radius: 1.72
+  m_Center: {x: 0.03, y: 0.71144176, z: -0.33}
 --- !u!114 &9123478367128807782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8738470174835174803}
   m_Enabled: 1
@@ -256,3 +257,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c5d7e54679ad44694a2901185213e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  EnemyHP: 5
