@@ -12,7 +12,7 @@ public class EnemySpawner : MonoBehaviour
         public Transform SpawnPoint;
         public Transform[] PatrolPoints;
     }
-    [SerializeField] private float spawnTimer = 6f;
+    [SerializeField] private float spawnRate = 6f;
     [SerializeField] private int maxEnemies = 5;
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private SpawnLocations[] spawnZones;
@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
             {
                 SpawnRandomEnemyAtRandomLocation();
             }
-            yield return new WaitForSeconds(spawnTimer);
+            yield return new WaitForSeconds(spawnRate);
         }
     }
 
