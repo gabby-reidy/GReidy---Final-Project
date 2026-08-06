@@ -4,6 +4,8 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    public Transform PlayerTransform;
+
     [Header("Patrolling Info")]
     [SerializeField] private NavMeshAgent agent;
     private Transform[] patrolPoints;
@@ -14,7 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private float projectileSpawnRate = 3f;
 
-    public Transform PlayerTransform;
+    private float delay = 0.25f;
 
     void Awake()
     {
@@ -25,7 +27,7 @@ public class Enemy : MonoBehaviour
     }
 
     /// <summary>
-    /// Allows enemy spawner script to initialize the instantiated enemys patrol points and spawn position
+    /// Allows enemy spawner script to initialize the instantiated enemy's patrol points and spawn position using nav agent
     /// </summary>
     /// <param name="points"></param>
     /// <param name="spawnPosition"></param>
@@ -48,9 +50,9 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator PatrolRoutine()
     {
-        while (!GameManager.GameOver)
+        while (!GameManager.IsGameOver)
         {
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(delay);
 
             if (agent.isOnNavMesh && !agent.pathPending)
             {
@@ -63,7 +65,7 @@ public class Enemy : MonoBehaviour
     }
 
     /// <summary>
-    /// Moves enemy between waypoints in the array - checks added during debugging, could not figure out what was causing errors
+    /// Moves enemy back and forth between waypoints in the array
     /// </summary>
     private void SetNextPoint()
     {
@@ -82,15 +84,17 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator ShootProjectilesAtPlayer()
     {
-        while (!GameManager.GameOver)
+        while (!GameManager.IsGameOver)
         {
-            yield return new WaitForSeconds(0.25f);
+            yield return new WaitForSeconds(delay);
 
             SpawnProjectile();
             yield return new WaitForSeconds(projectileSpawnRate);
         }
     }
-
+    /// <summary>
+    /// spawns a projectile at enemy fire point and passes player transform info down to it
+    /// </summary>
     private void SpawnProjectile()
     {
         GameObject newProjectile = Instantiate(projectilePrefab, firePoint.position, projectilePrefab.transform.rotation);

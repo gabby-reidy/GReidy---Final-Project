@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
         Move();
     }
 
+    /// <summary>
+    /// handles player movement based on input vector set in update. checks for movement for walk animation
+    /// </summary>
     private void Move()
     {
         rb.linearVelocity = movement.normalized * moveSpeed;

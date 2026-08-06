@@ -2,8 +2,14 @@ using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
 {
-    private EnemyHealth enemyHealth;
     [SerializeField] private int projectileDamage = 1;
+    [SerializeField] private float lifetime = 10f;
+    private EnemyHealth enemyHealth;
+
+    private void Start()
+    {
+        Destroy(gameObject, lifetime);
+    }
 
     private void OnTriggerEnter(Collider other)
     {

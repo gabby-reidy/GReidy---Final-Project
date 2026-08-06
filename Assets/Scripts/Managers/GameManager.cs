@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
-    public static bool GameOver;
+    public static bool IsGameOver;
     public static int MaxLives = 3;
     public int CurrentLives = 3;
 
+    [SerializeField] private GameObject gameOverScreen;
     private PlayerLifeManager playerLifeManager;
-    private EnemyHealth enemyHealth;
 
     private void Awake()
     {
@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        GameOver = false;
+        IsGameOver = false;
         ResetLives();
     }
 
@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
         if (CurrentLives <= 0)
         {
             CurrentLives = 0;
-            //game over
+            GameOver();
         }
     }
 
@@ -70,8 +70,13 @@ public class GameManager : MonoBehaviour
         CurrentLives = MaxLives;
     }
 
-    public EnemyHealth GetEnemyHealth()
+    public void GameOver()
     {
-        return enemyHealth;
+        IsGameOver = true;
+    }
+
+    public void GoBackToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 }

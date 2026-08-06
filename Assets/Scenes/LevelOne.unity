@@ -1432,6 +1432,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   CurrentLives: 3
+  gameOverScreen: {fileID: 0}
 --- !u!4 &741788164
 Transform:
   m_ObjectHideFlags: 0

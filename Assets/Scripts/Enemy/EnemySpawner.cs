@@ -30,17 +30,17 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemiesOnTimer()
     {
-        while (!GameManager.GameOver)
+        while (!GameManager.IsGameOver)
         {
             if (activeEnemies.Count < maxEnemies && spawnZones.Length > 0 && enemyPrefabs.Length > 0)
             {
-                SpawnRandomEnemy();
+                SpawnRandomEnemyAtRandomLocation();
             }
             yield return new WaitForSeconds(spawnTimer);
         }
     }
 
-    private void SpawnRandomEnemy()
+    private void SpawnRandomEnemyAtRandomLocation()
     {
         int spawnZoneIndex = Random.Range(0, spawnZones.Length);
         SpawnLocations randomZone = spawnZones[spawnZoneIndex];

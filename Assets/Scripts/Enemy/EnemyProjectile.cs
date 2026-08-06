@@ -6,7 +6,7 @@ public class EnemyProjectile : MonoBehaviour
     [SerializeField] private Rigidbody rb;
 
     [SerializeField] private float speed = 15f;
-    [SerializeField] private float lifetime = 5f;
+    [SerializeField] private float lifetime = 10f;
 
     private Vector3 direction;
 
@@ -19,6 +19,7 @@ public class EnemyProjectile : MonoBehaviour
         }
 
         direction = (Player.position - transform.position).normalized;
+        Destroy(gameObject, lifetime);
     }
 
     private void Update()
