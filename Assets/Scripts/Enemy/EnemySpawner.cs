@@ -15,7 +15,11 @@ public class EnemySpawner : MonoBehaviour
     }
     [Header("Spawn Info")]
     [SerializeField] private float spawnRate = 6f;
-    [SerializeField] private int maxEnemies = 5;
+    [SerializeField] private int maxEnemiesInScene = 5;
+    [SerializeField] private int maxLevelSpawns = 10;
+    private int totalSpawned = 0;
+
+    [Header("Zones and Prefabs")]
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private SpawnLocations[] spawnZones;
 
@@ -33,11 +37,11 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemiesOnTimer()
     {
-        while (!GameManager.IsGameOver && !LevelManager.isLevelCleared)
+        while (!GameManager.IsGameOver && !LevelManager.isLevelCleared && totalSpawned < maxLevelSpawns)
         {
             activeEnemies.RemoveAll(e => e == null);
 
-            if (activeEnemies.Count < maxEnemies && spawnZones.Length > 0 && enemyPrefabs.Length > 0)
+            if (activeEnemies.Count < maxEnemiesInScene && spawnZones.Length > 0 && enemyPrefabs.Length > 0)
             {
                 SpawnRandomEnemyAtRandomLocation();
             }
@@ -60,6 +64,9 @@ public class EnemySpawner : MonoBehaviour
 
         GameObject newEnemy = Instantiate(randomPrefab, Vector3.zero, randomPrefab.transform.rotation);
         activeEnemies.Add(newEnemy);
+
+        totalSpawned++;
+
         Enemy enemyScript = newEnemy.GetComponent<Enemy>();
 
         if (enemyScript != null)

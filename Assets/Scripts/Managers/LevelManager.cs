@@ -21,6 +21,9 @@ public class LevelManager : MonoBehaviour
         isLevelCleared = false;
     }
 
+    /// <summary>
+    /// Tracks players current kills and checks if they have reached the target before invoking the onlevelcleared unity event
+    /// </summary>
     private void IncreaseKillCount()
     {
         currentKills++;
@@ -33,6 +36,9 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Allows enemy health script to report that it has died, and invoke the action event
+    /// </summary>
     public static void AddKill()
     {
         OnEnemyKilled?.Invoke();
