@@ -20,16 +20,11 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private SpawnLocations[] spawnZones;
     private List<GameObject> activeEnemies = new List<GameObject>();
 
-    [SerializeField] private int targetKills = 10;
+    [SerializeField] private int targetKills = 2; // changed for testing
     private int currentKills = 0;
     private bool levelCleared = false;
 
-    public UnityEvent OnEnemiesCleared; // need to implement 
 
-    private void OnEnable()
-    {
-        EnemyHealth.OnDeath += HandleEnemyDeath;
-    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -75,25 +70,3 @@ public class EnemySpawner : MonoBehaviour
             enemyScript.InitializePatrol(randomZone.PatrolPoints, randomZone.SpawnPoint.position);
         }
     }
-
-    private void HandleEnemyDeath(GameObject enemy)
-    {
-        if (activeEnemies.Contains(enemy))
-        {
-            activeEnemies.Remove(enemy);
-        }
-
-        currentKills++;
-
-        if (currentKills >= targetKills)
-        {
-            levelCleared = true;
-            OnEnemiesCleared.Invoke();
-        }
-    }
-
-    private void OnDisable()
-    {
-        EnemyHealth.OnDeath -= HandleEnemyDeath;
-    }
-}

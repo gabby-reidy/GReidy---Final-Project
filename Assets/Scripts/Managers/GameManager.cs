@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        IsGameOver = true;
+        //IsGameOver = true;
     }
 
     public void GoBackToMainMenu()
