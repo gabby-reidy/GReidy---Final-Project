@@ -20,7 +20,7 @@ public class PlayerShooting : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);  // change to raycast if i have time at the end 
         mouseWorld.y = transform.position.y;
 
         lookDirection = mouseWorld - transform.position;

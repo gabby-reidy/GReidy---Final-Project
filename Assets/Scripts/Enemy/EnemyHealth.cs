@@ -1,9 +1,12 @@
 using UnityEngine;
+using System;
 
 public class EnemyHealth : MonoBehaviour
 {
     private int enemyHP = 5;
     public int EnemyHP => enemyHP;
+
+    public static event Action<GameObject> OnDeath;
 
     /// <summary>
     /// 
@@ -16,9 +19,15 @@ public class EnemyHealth : MonoBehaviour
         //play SFX?
         if(enemyHP <= 0)
         {
-            Destroy(gameObject);
+            Die();
             //play sfx
             //play anim?
         }
+    }
+
+    private void Die()
+    {
+        OnDeath?.Invoke(gameObject);
+        Destroy(gameObject);
     }
 }

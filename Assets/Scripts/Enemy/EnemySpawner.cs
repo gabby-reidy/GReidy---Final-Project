@@ -1,6 +1,7 @@
- using UnityEngine;
+using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
+using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -12,12 +13,23 @@ public class EnemySpawner : MonoBehaviour
         public Transform SpawnPoint;
         public Transform[] PatrolPoints;
     }
+    [Header("Spawn Info")]
     [SerializeField] private float spawnRate = 6f;
     [SerializeField] private int maxEnemies = 5;
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private SpawnLocations[] spawnZones;
     private List<GameObject> activeEnemies = new List<GameObject>();
 
+    [SerializeField] private int targetKills = 10;
+    private int currentKills = 0;
+    private bool levelCleared = false;
+
+    public UnityEvent OnEnemiesCleared; // need to implement 
+
+    private void OnEnable()
+    {
+        EnemyHealth.OnDeath += HandleEnemyDeath;
+    }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -62,5 +74,26 @@ public class EnemySpawner : MonoBehaviour
             enemyScript.PlayerTransform = PlayerTransform;
             enemyScript.InitializePatrol(randomZone.PatrolPoints, randomZone.SpawnPoint.position);
         }
+    }
+
+    private void HandleEnemyDeath(GameObject enemy)
+    {
+        if (activeEnemies.Contains(enemy))
+        {
+            activeEnemies.Remove(enemy);
+        }
+
+        currentKills++;
+
+        if (currentKills >= targetKills)
+        {
+            levelCleared = true;
+            OnEnemiesCleared.Invoke();
+        }
+    }
+
+    private void OnDisable()
+    {
+        EnemyHealth.OnDeath -= HandleEnemyDeath;
     }
 }
