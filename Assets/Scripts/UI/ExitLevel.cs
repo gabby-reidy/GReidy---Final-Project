@@ -19,7 +19,9 @@ public class ExitLevel : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Debug.Log("Player entered exit door");
-            SceneManager.LoadScene("LevelTwo"); // change this to iterate so it can be reused
+
+            int sceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+            SceneManager.LoadScene(sceneIndex);
         }
     }
 }
