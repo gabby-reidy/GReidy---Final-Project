@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform firePoint;
     [SerializeField] private float projectileSpawnRate = 3f;
 
-    private float delay = 0.25f;
+    private float delay = 0.5f;
 
     void Awake()
     {

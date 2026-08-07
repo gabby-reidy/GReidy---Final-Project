@@ -856,8 +856,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   playerTransform: {fileID: 766417840}
-  minX: -40
-  maxX: 40
+  minX: -50
+  maxX: 50
   minZ: -58
   maxZ: 58
   cam: {fileID: 330585545}
@@ -1259,7 +1259,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
   PlayerTransform: {fileID: 766417840}
   spawnRate: 6
-  maxEnemies: 5
+  maxEnemiesInScene: 0
+  maxLevelSpawns: 0
   enemyPrefabs:
   - {fileID: 8738470174835174803, guid: ed3621fdee9578f44bdfb4521206be3c, type: 3}
   - {fileID: 856164601700053506, guid: d565dac0960bc6340af0842d9c166e97, type: 3}

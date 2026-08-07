@@ -14,10 +14,11 @@ public class EnemySpawner : MonoBehaviour
         public Transform[] PatrolPoints;
     }
     [Header("Spawn Info")]
-    [SerializeField] private float spawnRate = 6f;
-    [SerializeField] private int maxEnemiesInScene = 5;
-    [SerializeField] private int maxLevelSpawns = 10;
+    [SerializeField] private float spawnRate;
+    [SerializeField] private int maxEnemiesInScene;
+    [SerializeField] private int maxLevelSpawns;
     private int totalSpawned = 0;
+    private float spawnDelay = 3f;
 
     [Header("Zones and Prefabs")]
     [SerializeField] private GameObject[] enemyPrefabs;
@@ -37,6 +38,8 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemiesOnTimer()
     {
+        yield return new WaitForSeconds(spawnDelay);
+
         while (!GameManager.IsGameOver && !LevelManager.isLevelCleared && totalSpawned < maxLevelSpawns)
         {
             activeEnemies.RemoveAll(e => e == null);
