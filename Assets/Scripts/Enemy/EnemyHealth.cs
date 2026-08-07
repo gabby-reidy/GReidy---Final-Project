@@ -6,8 +6,6 @@ public class EnemyHealth : MonoBehaviour
     private int enemyHP = 5;
     public int EnemyHP => enemyHP;
 
-    public static event Action<GameObject> OnDeath;
-
     /// <summary>
     /// 
     /// </summary>
@@ -27,7 +25,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void Die()
     {
-        OnDeath?.Invoke(gameObject);
+        LevelManager.AddKill();
         Destroy(gameObject);
     }
 }

@@ -18,12 +18,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private int maxEnemies = 5;
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private SpawnLocations[] spawnZones;
+
     private List<GameObject> activeEnemies = new List<GameObject>();
-
-    [SerializeField] private int targetKills = 2; // changed for testing
-    private int currentKills = 0;
-    private bool levelCleared = false;
-
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -37,8 +33,10 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemiesOnTimer()
     {
-        while (!GameManager.IsGameOver)
+        while (!GameManager.IsGameOver && !LevelManager.isLevelCleared)
         {
+            activeEnemies.RemoveAll(e => e == null);
+
             if (activeEnemies.Count < maxEnemies && spawnZones.Length > 0 && enemyPrefabs.Length > 0)
             {
                 SpawnRandomEnemyAtRandomLocation();
@@ -70,3 +68,4 @@ public class EnemySpawner : MonoBehaviour
             enemyScript.InitializePatrol(randomZone.PatrolPoints, randomZone.SpawnPoint.position);
         }
     }
+}

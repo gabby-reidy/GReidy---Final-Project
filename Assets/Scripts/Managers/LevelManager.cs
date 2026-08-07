@@ -9,14 +9,19 @@ public class LevelManager : MonoBehaviour
 
     [SerializeField] private int targetKills = 10;
     private int currentKills = 0;
-    private bool isLevelCleared = false;
+    public static bool isLevelCleared { get; private set; } = false;
 
     private void OnEnable()
     {
-        //subscribe
+        OnEnemyKilled += IncreaseKillCount;
     }
 
-    private void HandeEnemyDeath()
+    private void Awake()
+    {
+        isLevelCleared = false;
+    }
+
+    private void IncreaseKillCount()
     {
         currentKills++;
         Debug.Log("current kills " + currentKills);
@@ -28,8 +33,13 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    public static void AddKill()
+    {
+        OnEnemyKilled?.Invoke();
+    }
+
     private void OnDisable()
     {
-        //unsubscribe
+        OnEnemyKilled -= IncreaseKillCount;
     }
 }
