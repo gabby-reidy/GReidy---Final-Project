@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 787475562729472220}
   - component: {fileID: 8629889931948416753}
   m_Layer: 7
-  m_Name: Enemy1
+  m_Name: Sprite
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 3be622b0f4e153d4aa26689ada5c6cc5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 799409afce377c44b90d75e2015e8250, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,7 +116,7 @@ Transform:
   m_GameObject: {fileID: 7200615643959531782}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.68, y: 0.5, z: -0.483}
+  m_LocalPosition: {x: 3.9, y: 0.5, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 7931391929662057856}
   - component: {fileID: 9123478367128807782}
   m_Layer: 7
-  m_Name: Enemy
+  m_Name: Rat King Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,8 +153,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.39, y: 0.01, z: 0.71}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 787475562729472220}
   - {fileID: 9026689440314917303}
@@ -194,9 +194,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1876d1831f9a557448b27ded2143f875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  PlayerTransform: {fileID: 0}
   agent: {fileID: 3118203205398293573}
   projectilePrefab: {fileID: 6362079666413271699, guid: 7fb26d0b9d65f394fa72657ddee5ee21, type: 3}
   firePoint: {fileID: 9026689440314917303}
+  projectileSpawnRate: 3
 --- !u!54 &1187396024709407210
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -257,4 +259,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c5d7e54679ad44694a2901185213e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
-  EnemyHP: 5

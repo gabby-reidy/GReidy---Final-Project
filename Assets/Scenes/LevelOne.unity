@@ -443,7 +443,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  targetKills: 10
+  targetKills: 8
 --- !u!4 &76964586
 Transform:
   m_ObjectHideFlags: 0
@@ -1263,7 +1263,7 @@ MonoBehaviour:
   maxLevelSpawns: 8
   enemyPrefabs:
   - {fileID: 8738470174835174803, guid: ed3621fdee9578f44bdfb4521206be3c, type: 3}
-  - {fileID: 856164601700053506, guid: d565dac0960bc6340af0842d9c166e97, type: 3}
+  - {fileID: 8738470174835174803, guid: 294c5eb1aa7305549be62601a6a51dc3, type: 3}
   spawnZones:
   - SpawnPoint: {fileID: 1824894017}
     PatrolPoints:
@@ -3940,7 +3940,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1750273148
 Transform:
   m_ObjectHideFlags: 0
