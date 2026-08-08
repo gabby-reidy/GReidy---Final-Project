@@ -31,14 +31,13 @@ public class EnemyHealth : MonoBehaviour
         if(enemyHP <= 0)
         {
             Die();
-            //play sfx
-            //play anim?
         }
     }
 
     private void Die()
     {
         LevelManager.AddKill();
+        AudioManager.Instance.EnemyDeathSFX();
         Destroy(gameObject);
     }
 }

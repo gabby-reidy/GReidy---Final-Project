@@ -2084,8 +2084,8 @@ RectTransform:
   m_GameObject: {fileID: 944894781}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1.3, y: 1.5, z: 1.3}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1466372000}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2873,9 +2873,11 @@ MonoBehaviour:
   playerProjectileBurstSFX: {fileID: 8300000, guid: 26a0bd31a4b26b2498509799337764e6, type: 3}
   enemyProjectileSFX: {fileID: 0}
   loseLifeSFX: {fileID: 8300000, guid: e9bb6abb46f48554e8e8eb1f4e0353f9, type: 3}
-  enemySFX:
-  - {fileID: 8300000, guid: 31630d347f247474385b8445715a6f68, type: 3}
-  - {fileID: 8300000, guid: 1c5beeb4b13f29c4395a9bac8108773b, type: 3}
+  enemyAttackSFX: []
+  enemyDeathSFX:
+  - {fileID: 8300000, guid: 2adf6533e45b9784ba112968670f699e, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!4 &1364808897
 Transform:
   m_ObjectHideFlags: 0
@@ -3194,7 +3196,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1466372000
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3707,7 +3709,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1750273148
 Transform:
   m_ObjectHideFlags: 0
@@ -4180,8 +4182,8 @@ RectTransform:
   m_GameObject: {fileID: 1940488415}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 1.3, y: 1.5, z: 1.3}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1466372000}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

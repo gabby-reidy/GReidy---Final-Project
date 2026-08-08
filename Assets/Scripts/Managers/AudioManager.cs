@@ -19,12 +19,13 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioClip playButtonSFX;
     [SerializeField] private AudioClip settingsButtonSFX;
 
-    [Header("SFX")]
+    [Header("Game SFX")]
     [SerializeField] private AudioClip playerProjectileSFX;
     [SerializeField] private AudioClip playerProjectileBurstSFX;
     [SerializeField] private AudioClip enemyProjectileSFX;
     [SerializeField] private AudioClip loseLifeSFX;
-    [SerializeField] private AudioClip[] enemySFX;
+    [SerializeField] private AudioClip[] enemyAttackSFX;
+    [SerializeField] private AudioClip[] enemyDeathSFX;
 
     void Awake()
     {
@@ -60,6 +61,12 @@ public class AudioManager : MonoBehaviour
     public void PlayerProjectileBurstSFX()
     {
         AudioSource.PlayClipAtPoint(playerProjectileBurstSFX, Vector3.zero);
+    }
+
+    public void EnemyDeathSFX()
+    {
+        int enemyDeathSFXIndex = Random.Range(0, enemyDeathSFX.Length);
+        AudioSource.PlayClipAtPoint(enemyAttackSFX[enemyDeathSFXIndex], Vector3.zero);
     }
 
     public void ChangeSong(AudioClip newSong) // only really good for button clicks
