@@ -4722,63 +4722,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5729141321600424252, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
   m_PrefabInstance: {fileID: 666846789485938015}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &5185421242979437891
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7686103649790123482, guid: ed3621fdee9578f44bdfb4521206be3c, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 5.82849
-      objectReference: {fileID: 0}
-    - target: {fileID: 7686103649790123482, guid: ed3621fdee9578f44bdfb4521206be3c, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7686103649790123482, guid: ed3621fdee9578f44bdfb4521206be3c, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -16.33476
-      objectReference: {fileID: 0}
-    - target: {fileID: 7686103649790123482, guid: ed3621fdee9578f44bdfb4521206be3c, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7686103649790123482, guid: ed3621fdee9578f44bdfb4521206be3c, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7686103649790123482, guid: ed3621fdee9578f44bdfb4521206be3c, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7686103649790123482, guid: ed3621fdee9578f44bdfb4521206be3c, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7686103649790123482, guid: ed3621fdee9578f44bdfb4521206be3c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7686103649790123482, guid: ed3621fdee9578f44bdfb4521206be3c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7686103649790123482, guid: ed3621fdee9578f44bdfb4521206be3c, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8738470174835174803, guid: ed3621fdee9578f44bdfb4521206be3c, type: 3}
-      propertyPath: m_Name
-      value: Devil Enemy
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ed3621fdee9578f44bdfb4521206be3c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4802,4 +4745,3 @@ SceneRoots:
   - {fileID: 766417840}
   - {fileID: 1229157853}
   - {fileID: 1374063190}
-  - {fileID: 5185421242979437891}
