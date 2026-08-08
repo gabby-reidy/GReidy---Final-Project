@@ -17,12 +17,17 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float projectileSpawnRate = 3f;
 
     private float delay = 0.5f;
+    [SerializeField] private Animator animator;
 
     void Awake()
     {
         if (agent == null)
         {
             agent = GetComponent<NavMeshAgent>();
+        }
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
         }
     }
 
@@ -88,6 +93,10 @@ public class Enemy : MonoBehaviour
         {
             yield return new WaitForSeconds(delay);
 
+            if (animator != null)
+            {
+                animator.SetTrigger("Attack");
+            }
             SpawnProjectile();
             yield return new WaitForSeconds(projectileSpawnRate);
         }

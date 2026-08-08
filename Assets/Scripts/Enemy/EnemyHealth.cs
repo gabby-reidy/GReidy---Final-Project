@@ -6,6 +6,16 @@ public class EnemyHealth : MonoBehaviour
     private int enemyHP = 5;
     public int EnemyHP => enemyHP;
 
+    [SerializeField] private Animator animator;
+
+    private void Awake()
+    {
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
+    }
+
     /// <summary>
     /// 
     /// </summary>
@@ -13,7 +23,10 @@ public class EnemyHealth : MonoBehaviour
     public void TakeDamage(int damage)
     {
         enemyHP = Mathf.Max(0, enemyHP - damage);
-        //play hit animation
+        if (animator != null)
+        {
+            animator.SetTrigger("Hit");
+        }
         //play SFX?
         if(enemyHP <= 0)
         {

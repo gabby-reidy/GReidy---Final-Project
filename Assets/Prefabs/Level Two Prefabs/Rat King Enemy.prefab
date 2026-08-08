@@ -222,6 +222,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6362079666413271699, guid: 7fb26d0b9d65f394fa72657ddee5ee21, type: 3}
   firePoint: {fileID: 9026689440314917303}
   projectileSpawnRate: 3
+  animator: {fileID: 8819742305646205453}
 --- !u!54 &1187396024709407210
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -282,3 +283,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c5d7e54679ad44694a2901185213e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  animator: {fileID: 8819742305646205453}

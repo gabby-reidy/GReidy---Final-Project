@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 3224379499647293140}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 2168f5e0bfcedc34ca09fb28200ca38d, type: 2}
+  m_Controller: {fileID: 22100000, guid: bdf38d8bda04aee4d88fcc4c98e8b862, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -222,6 +222,7 @@ MonoBehaviour:
   projectilePrefab: {fileID: 6362079666413271699, guid: 7fb26d0b9d65f394fa72657ddee5ee21, type: 3}
   firePoint: {fileID: 9026689440314917303}
   projectileSpawnRate: 3
+  animator: {fileID: 4649863511657966529}
 --- !u!54 &1187396024709407210
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -282,3 +283,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54c5d7e54679ad44694a2901185213e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  animator: {fileID: 4649863511657966529}
