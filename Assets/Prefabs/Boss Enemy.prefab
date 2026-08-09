@@ -82,7 +82,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 799409afce377c44b90d75e2015e8250, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 76edb022ccea6dc40a91140ebf6b09ea, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 3224379499647293140}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 2168f5e0bfcedc34ca09fb28200ca38d, type: 2}
+  m_Controller: {fileID: 9100000, guid: 18392ec19821b5d41abe47ed933f36f7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -114,6 +114,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &6301169421839908084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8790539231101243506}
+  m_Layer: 7
+  m_Name: Add Spawn Point 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8790539231101243506
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6301169421839908084}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.8, y: 0, z: 4.62}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7686103649790123482}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7200615643959531782
 GameObject:
   m_ObjectHideFlags: 0
@@ -139,7 +170,38 @@ Transform:
   m_GameObject: {fileID: 7200615643959531782}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9, y: 0.5, z: 0.03}
+  m_LocalPosition: {x: 1.36, y: 0.5, z: 0.13}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7686103649790123482}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8417617714010038017
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4985093905310897571}
+  m_Layer: 7
+  m_Name: Add Spawn Point 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4985093905310897571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8417617714010038017}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.8, y: 0, z: -5.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -155,13 +217,12 @@ GameObject:
   m_Component:
   - component: {fileID: 7686103649790123482}
   - component: {fileID: 3118203205398293573}
-  - component: {fileID: 7322755648864508435}
   - component: {fileID: 1187396024709407210}
   - component: {fileID: 7931391929662057856}
-  - component: {fileID: 9123478367128807782}
+  - component: {fileID: 8242403268487690365}
   m_Layer: 7
-  m_Name: Rat King Enemy
-  m_TagString: Enemy
+  m_Name: Boss Enemy
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -176,11 +237,13 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -12.39, y: 0.01, z: 0.71}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 787475562729472220}
   - {fileID: 9026689440314917303}
+  - {fileID: 4985093905310897571}
+  - {fileID: 8790539231101243506}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!195 &3118203205398293573
@@ -192,7 +255,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 8738470174835174803}
   m_Enabled: 1
   m_AgentTypeID: -1372625422
-  m_Radius: 3.91
+  m_Radius: 4.54
   m_Speed: 8
   m_Acceleration: 15
   avoidancePriority: 50
@@ -205,24 +268,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &7322755648864508435
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8738470174835174803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1876d1831f9a557448b27ded2143f875, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  PlayerTransform: {fileID: 0}
-  agent: {fileID: 3118203205398293573}
-  projectilePrefab: {fileID: 6362079666413271699, guid: 7fb26d0b9d65f394fa72657ddee5ee21, type: 3}
-  firePoint: {fileID: 9026689440314917303}
-  projectileSpawnRate: 3
-  animator: {fileID: 8819742305646205453}
 --- !u!54 &1187396024709407210
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -271,7 +316,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 4.97859
   m_Center: {x: 0.029999733, y: 0.71144104, z: 0.07901573}
---- !u!114 &9123478367128807782
+--- !u!114 &8242403268487690365
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -280,7 +325,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 8738470174835174803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 54c5d7e54679ad44694a2901185213e2, type: 3}
+  m_Script: {fileID: 11500000, guid: 65791b9bc73e52f4187be53fda560821, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
+  m_EditorClassIdentifier: Assembly-CSharp::BossEnemy
+  agent: {fileID: 3118203205398293573}
+  playerTransform: {fileID: 0}
+  maxHealth: 50
+  idealDistance: 5
+  movementOffset: 1
+  projectilePrefab: {fileID: 5673768050831015879, guid: 76b4615498e0c114c81378e358d62a41, type: 3}
+  firePoint: {fileID: 9026689440314917303}
+  projectileSpawnRate: 2
+  minionPrefab: {fileID: 0}
+  enemyMinionSpawnPoints:
+  - {fileID: 4985093905310897571}
+  - {fileID: 8790539231101243506}
+  enemyMinionSpawnRate: 10
   animator: {fileID: 8819742305646205453}

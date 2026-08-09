@@ -5,6 +5,7 @@ public class PlayerProjectile : MonoBehaviour
     [SerializeField] private int projectileDamage = 1;
     [SerializeField] private float lifetime = 10f;
     private EnemyHealth enemyHealth;
+    private BossEnemy bossEnemy;
 
     private void Start()
     {
@@ -32,6 +33,14 @@ public class PlayerProjectile : MonoBehaviour
             Destroy(other.gameObject);
             Destroy(gameObject);
             AudioManager.Instance.PlayerProjectileBurstSFX();
+        }
+
+        if (other.gameObject.CompareTag("Boss"))
+        {
+            Destroy(gameObject);
+            AudioManager.Instance.PlayerProjectileBurstSFX();
+            bossEnemy = other.gameObject.GetComponent<BossEnemy>();
+            bossEnemy.BossTakeDamage(projectileDamage);
         }
     }
 }
