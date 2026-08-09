@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -28,6 +29,8 @@ public class BossEnemy : MonoBehaviour
     [SerializeField] private GameObject minionPrefab;
     [SerializeField] private Transform[] enemyMinionSpawnPoints;
     [SerializeField] private float enemyMinionSpawnRate = 10f;
+
+    private List<GameObject> activeMinions = new List<GameObject>();
 
     [SerializeField] private Animator animator;
 
@@ -115,8 +118,10 @@ public class BossEnemy : MonoBehaviour
         while (!GameManager.IsGameOver && !isDead)
         {
             yield return new WaitForSeconds(enemyMinionSpawnRate);
+
+            activeMinions.RemoveAll(e => e == null);
             
-            if (minionPrefab != null && enemyMinionSpawnPoints.Length > 0)
+            if (activeMinions.Count == 0 && minionPrefab != null && enemyMinionSpawnPoints.Length > 0)
             {
                 foreach (Transform spawnPoint in enemyMinionSpawnPoints)
                 {
@@ -128,6 +133,8 @@ public class BossEnemy : MonoBehaviour
                         {
                             minionScript.PlayerTransform = playerTransform;
                         }
+
+                        activeMinions.Add(minion);
                     }
                 }
             }
