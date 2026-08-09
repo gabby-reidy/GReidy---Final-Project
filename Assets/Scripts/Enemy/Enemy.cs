@@ -87,7 +87,7 @@ public class Enemy : MonoBehaviour
         patrolPointIndex = (patrolPointIndex + 1) % patrolPoints.Length;
     }
 
-    private IEnumerator ShootProjectilesAtPlayer()
+    protected virtual IEnumerator ShootProjectilesAtPlayer()
     {
         while (!GameManager.IsGameOver)
         {
@@ -98,17 +98,27 @@ public class Enemy : MonoBehaviour
                 animator.SetTrigger("Attack");
             }
             SpawnProjectile();
-            AudioManager.Instance.EnemyAttackSFX();
+
+            if (AudioManager.Instance != null) // need to add these everywhere
+            {
+                AudioManager.Instance.EnemyAttackSFX();
+            }
             yield return new WaitForSeconds(projectileSpawnRate);
         }
     }
     /// <summary>
     /// spawns a projectile at enemy fire point and passes player transform info down to it
     /// </summary>
-    private void SpawnProjectile()
+    protected virtual void SpawnProjectile()
     {
-        GameObject newProjectile = Instantiate(projectilePrefab, firePoint.position, projectilePrefab.transform.rotation);
-        EnemyProjectile projectileScript = newProjectile.GetComponent<EnemyProjectile>();
-        projectileScript.Player = PlayerTransform;
+        if (projectilePrefab != null && firePoint != null) // make sure null checks are everywhere too
+        {
+            GameObject newProjectile = Instantiate(projectilePrefab, firePoint.position, projectilePrefab.transform.rotation);
+            EnemyProjectile projectileScript = newProjectile.GetComponent<EnemyProjectile>();
+            if (projectileScript != null)
+            {
+                projectileScript.Player = PlayerTransform;
+            }
+        }
     }
 }

@@ -11,6 +11,7 @@ TagManager:
   - GameOverUI
   - WinUI
   - PauseUI
+  - BossMinion
   layers:
   - Default
   - TransparentFX

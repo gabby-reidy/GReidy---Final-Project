@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class BossEnemy : MonoBehaviour
 {
+    public static event Action OnBossDeath;
+
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Transform playerTransform;
 
@@ -50,7 +52,7 @@ public class BossEnemy : MonoBehaviour
     private void Start()
     {
         StartCoroutine(ShootProjectilesAtPlayer());
-        //StartCoroutine(SpawnMinionsOnTimer());
+        StartCoroutine(SpawnMinionsOnTimer());
     }
 
     void Update()
@@ -120,7 +122,12 @@ public class BossEnemy : MonoBehaviour
                 {
                     if (spawnPoint != null)
                     {
-                        Instantiate(minionPrefab, spawnPoint.position, minionPrefab.transform.rotation);
+                        GameObject minion = Instantiate(minionPrefab, spawnPoint.position, minionPrefab.transform.rotation);
+                        BossMinion minionScript = minion.GetComponent<BossMinion>();
+                        if (minionScript != null && playerTransform != null)
+                        {
+                            minionScript.PlayerTransform = playerTransform;
+                        }
                     }
                 }
             }
@@ -156,6 +163,9 @@ public class BossEnemy : MonoBehaviour
 
         StopAllCoroutines();
         //play death sfx
+
+        OnBossDeath?.Invoke();
+
         if (GameManager.Instance != null)
         {
             GameManager.Instance.Victory();
