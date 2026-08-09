@@ -12,6 +12,7 @@ TagManager:
   - WinUI
   - PauseUI
   - BossMinion
+  - Ground
   layers:
   - Default
   - TransparentFX
