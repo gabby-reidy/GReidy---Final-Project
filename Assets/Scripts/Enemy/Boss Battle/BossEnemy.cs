@@ -68,6 +68,9 @@ public class BossEnemy : MonoBehaviour
         HandleMovement();
     }
 
+    /// <summary>
+    /// Gets distance from Boss to Player, and adjusts Boss' movement accordingly
+    /// </summary>
     private void HandleMovement()
     {
         float distance = Vector3.Distance(transform.position, playerTransform.position);
@@ -89,6 +92,11 @@ public class BossEnemy : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// While game is not over and boss is alive, shoot projectiles at player on a timer
+    /// Also sets boss attack animation & SFX
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator ShootProjectilesAtPlayer()
     {
         while (!GameManager.IsGameOver && !isDead)
@@ -114,10 +122,14 @@ public class BossEnemy : MonoBehaviour
                     AudioManager.Instance.BossAttackSFX();
                 }
             }
-         
         }
     }
 
+    /// <summary>
+    /// While game is not over and boss is alive, spawns minions from spawn points attached to boss prefab
+    /// Adds spawned minions to an active list and prevents from spawning more if those minions have not been destroyed
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator SpawnMinionsOnTimer()
     {
         while (!GameManager.IsGameOver && !isDead)
@@ -146,6 +158,10 @@ public class BossEnemy : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Allows player projectile script to apply damage to boss and plays boss hit animation
+    /// </summary>
+    /// <param name="damage"></param>
     public void BossTakeDamage(int damage)
     {
         if (isDead)
@@ -162,9 +178,11 @@ public class BossEnemy : MonoBehaviour
         {
             DieAndEndGame();
         }
-        // add sfx
     }
 
+    /// <summary>
+    /// Destroys the boss and ends the game
+    /// </summary>
     private void DieAndEndGame()
     {
         isDead = true;
@@ -175,7 +193,6 @@ public class BossEnemy : MonoBehaviour
         agent.enabled = false;
 
         StopAllCoroutines();
-        //play death sfx
 
         OnBossDeath?.Invoke();
 
@@ -183,6 +200,6 @@ public class BossEnemy : MonoBehaviour
         {
             GameManager.Instance.Victory();
         }
-        Destroy(gameObject, 1f);
+        Destroy(gameObject);
     }
 }

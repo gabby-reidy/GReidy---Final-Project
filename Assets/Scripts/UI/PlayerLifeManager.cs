@@ -1,12 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class PlayerLifeManager : MonoBehaviour
 {
     [SerializeField] private Image[] lifeIcons;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (GameManager.Instance != null)
@@ -14,12 +12,6 @@ public class PlayerLifeManager : MonoBehaviour
             GameManager.Instance.SetActiveLifeManager(this);
             UpdateLifeCount(GameManager.Instance.CurrentLives);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnDestroy()
@@ -30,6 +22,10 @@ public class PlayerLifeManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Enables UI life icons based on current lives parameter
+    /// </summary>
+    /// <param name="currentLives"></param>
     public void UpdateLifeCount(int currentLives)
     {
         for (int i = 0; i < lifeIcons.Length; i++)

@@ -3,7 +3,7 @@ using UnityEngine;
 public class ButtonManager : MonoBehaviour
 {
     /// <summary>
-    /// this enables the use of the singleton game manager function so that it does not break the link between levels
+    /// enables the use of the singleton game manager function so that it does not break the link between levels
     /// </summary>
    public void TriggerGoBackToMainMenu()
     {
@@ -13,6 +13,9 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// enables the use of the singleton game manager function so that it does not break the link between levels
+    /// </summary>
     public void TriggerLoadNextScene()
     {
         if (GameManager.Instance != null)

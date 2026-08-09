@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
 
         if (agent != null)
         {
-            agent.Warp(spawnPosition); // using warp because setdestination was not working on instantiation
+            agent.Warp(spawnPosition);
         }
 
         if (patrolPoints != null && patrolPoints.Length > 0)
@@ -53,6 +53,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// While game is not over and after a delay, sets enemy to the next patrol waypoint
+    /// This will keep the enemy constantly moving while the game is active
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator PatrolRoutine()
     {
         while (!GameManager.IsGameOver)
@@ -70,7 +75,7 @@ public class Enemy : MonoBehaviour
     }
 
     /// <summary>
-    /// Moves enemy back and forth between waypoints in the array
+    /// Moves enemy back and forth between patrol waypoints in the array
     /// </summary>
     private void SetNextPoint()
     {
@@ -87,6 +92,11 @@ public class Enemy : MonoBehaviour
         patrolPointIndex = (patrolPointIndex + 1) % patrolPoints.Length;
     }
 
+    /// <summary>
+    /// While game is not over, shoot projectiles at player on a timer
+    /// Also sets enemy attack animation & SFX
+    /// </summary>
+    /// <returns></returns>
     protected virtual IEnumerator ShootProjectilesAtPlayer()
     {
         while (!GameManager.IsGameOver)

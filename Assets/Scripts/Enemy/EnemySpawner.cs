@@ -1,7 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
-using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -26,7 +25,6 @@ public class EnemySpawner : MonoBehaviour
 
     private List<GameObject> activeEnemies = new List<GameObject>();
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (PlayerTransform == null)
@@ -36,6 +34,11 @@ public class EnemySpawner : MonoBehaviour
         StartCoroutine(SpawnEnemiesOnTimer());
     }
 
+    /// <summary>
+    /// Spawns enemies on a timer as long as the game is active, the level is not cleared, and the total spawn count has not been reached
+    /// also checks our active enemies list to make sure it does not spawn more than the max enemies allowed in the scene at once
+    /// </summary>
+    /// <returns></returns>
     private IEnumerator SpawnEnemiesOnTimer()
     {
         yield return new WaitForSeconds(spawnDelay);
@@ -52,6 +55,12 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// First chooses a random zone from the spawn zone array
+    /// Then chooses a random enemy prefab from enemy prefab array
+    /// Then spawns enemy and adds it to the active enemy list and increments the total spawn count
+    /// finally, passes player transform info down to the enemy script
+    /// </summary>
     private void SpawnRandomEnemyAtRandomLocation()
     {
         int spawnZoneIndex = Random.Range(0, spawnZones.Length);

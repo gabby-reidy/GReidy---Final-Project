@@ -1,5 +1,4 @@
 using UnityEngine;
-using System;
 
 public class EnemyHealth : MonoBehaviour
 {
@@ -18,7 +17,7 @@ public class EnemyHealth : MonoBehaviour
     }
 
     /// <summary>
-    /// 
+    /// Allows other scripts to deal damage to enemy and plays enemy hit animation
     /// </summary>
     /// <param name="damage"></param>
     public void TakeDamage(int damage)
@@ -28,7 +27,6 @@ public class EnemyHealth : MonoBehaviour
         {
             animator.SetTrigger("Hit");
         }
-        //play SFX?
         if(enemyHP <= 0)
         {
             AudioManager.Instance.EnemyDeathSFX();
@@ -36,6 +34,10 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adds a kill to the level kill count
+    /// destroys the enemy after a slight delay to allow SFX and animations to play
+    /// </summary>
     private void Die()
     {
         LevelManager.AddKill();

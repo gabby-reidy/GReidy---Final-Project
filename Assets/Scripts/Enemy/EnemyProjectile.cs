@@ -10,7 +10,6 @@ public class EnemyProjectile : MonoBehaviour
 
     private Vector3 direction;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (rb == null)
@@ -34,7 +33,7 @@ public class EnemyProjectile : MonoBehaviour
             Destroy(gameObject);
             if (GameManager.Instance != null)
             {
-                GameManager.Instance.LoseLife();
+                GameManager.Instance.PlayerLoseLife();
             }
         }
         

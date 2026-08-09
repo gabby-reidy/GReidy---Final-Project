@@ -9,13 +9,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private float clipVolume = .4f;
 
-    [Header("Music")] // might get rid of
-    [SerializeField] private AudioClip mainMenuSong;
-    [SerializeField] private AudioClip cutSceneSong;
-    [SerializeField] private AudioClip levelOneSong;
-    [SerializeField] private AudioClip levelTwoSong;
-    [SerializeField] private AudioClip levelThreeSong;
-
     [Header("UI SFX")]
     [SerializeField] private AudioClip playButtonSFX;
     [SerializeField] private AudioClip settingsButtonSFX;
@@ -54,12 +47,12 @@ public class AudioManager : MonoBehaviour
     }
     public void PlayButtonSFX()
     {
-        audioSource.PlayOneShot(playButtonSFX);
+        audioSource.PlayOneShot(playButtonSFX, clipVolume);
     }
 
     public void SettingsButtonSFX()
     {
-        audioSource.PlayOneShot(settingsButtonSFX);
+        audioSource.PlayOneShot(settingsButtonSFX, clipVolume);
     }
 
     public void PlayerProjectileSFX()
@@ -98,12 +91,5 @@ public class AudioManager : MonoBehaviour
     public void PlayerExitLevelSFX()
     {
         audioSource.PlayOneShot(playerExitLevelSFX);
-    }
-
-    public void ChangeSong(AudioClip newSong) // only really good for button clicks
-    {
-        audioSource.Stop();
-        audioSource.clip = newSong;
-        audioSource.Play();
     }
 }

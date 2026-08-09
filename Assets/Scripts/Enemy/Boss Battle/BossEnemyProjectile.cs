@@ -15,6 +15,10 @@ public class BossEnemyProjectile : MonoBehaviour
         Destroy(gameObject, lifetime);
     }
 
+    /// <summary>
+    /// Allows boss script to set projectile position
+    /// </summary>
+    /// <param name="targetPosition"></param>
     public void SetProjectilePosition(Vector3 targetPosition)
     {
         Vector3 direction = (targetPosition - transform.position).normalized;
@@ -28,7 +32,7 @@ public class BossEnemyProjectile : MonoBehaviour
             Destroy(gameObject);
             if (GameManager.Instance != null)
             {
-                GameManager.Instance.LoseLife();
+                GameManager.Instance.PlayerLoseLife();
             }
         }
 

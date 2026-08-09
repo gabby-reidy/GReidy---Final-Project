@@ -8,16 +8,19 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 movement;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (rb == null)
         {
             rb = GetComponent<Rigidbody>();
         }
+
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
     }
 
-    // Update is called once per frame
     void Update()
     {
         movement.x = -Input.GetAxisRaw("Vertical");
@@ -38,11 +41,17 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = movement.normalized * moveSpeed;
         if (movement.x != 0 || movement.z != 0)
         {
-            animator.SetBool("isWalking", true);
+            if (animator != null)
+            {
+                animator.SetBool("isWalking", true);
+            }
         }
         else if (movement.x == 0 && movement.z == 0)
         {
-            animator.SetBool("isWalking", false);
+            if (animator != null)
+            {
+                animator.SetBool("isWalking", false);
+            }
         }
     }
 
@@ -52,7 +61,7 @@ public class PlayerController : MonoBehaviour
         {
             if (GameManager.Instance != null)
             {
-                GameManager.Instance.LoseLife();
+                GameManager.Instance.PlayerLoseLife();
             }
         }
 
@@ -60,7 +69,7 @@ public class PlayerController : MonoBehaviour
         {
             if (GameManager.Instance != null) 
             {
-                GameManager.Instance.LoseLife();
+                GameManager.Instance.PlayerLoseLife();
             }
         }
     }

@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
 
@@ -10,7 +9,7 @@ public class GameManager : MonoBehaviour
     public static int MaxLives = 3;
     public int CurrentLives = 3;
 
-    [SerializeField] private GameObject gameOverScreen; // serialze for testing
+    private GameObject gameOverScreen;
     private GameObject victoryScreen;
     private GameObject loadingScreen;
 
@@ -48,6 +47,9 @@ public class GameManager : MonoBehaviour
         victoryScreen = screen;
     }
 
+    /// <summary>
+    /// Sets timescale to prevent any issues with pausing, then loads the next scene in the build order with the coroutine
+    /// </summary>
     public void LoadNextScene()
     {
         Time.timeScale = 1f;
@@ -59,6 +61,11 @@ public class GameManager : MonoBehaviour
         StartCoroutine(LoadSceneAsynchronously(nextSceneIndex));
     }
 
+    /// <summary>
+    /// Loads scene asynchronously and enables loading screen
+    /// </summary>
+    /// <param name="sceneIndex">allows any method that calls this to load scene based on build index</param>
+    /// <returns></returns>
     private IEnumerator LoadSceneAsynchronously(int sceneIndex)
     {
         if (loadingScreen != null)
@@ -74,7 +81,7 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Sets active scene's LifeManager to this GameManager
+    /// Sets active scene's UI LifeManager to this GameManager
     /// </summary>
     /// <param name="manager"></param>
     public void SetActiveLifeManager(PlayerLifeManager manager)
@@ -82,7 +89,7 @@ public class GameManager : MonoBehaviour
         playerLifeManager = manager;
     }
     /// <summary>
-    /// Clears reference to LifeManager
+    /// Clears reference to UI LifeManager
     /// </summary>
     /// <param name="manager"></param>
     public void ClearActiveLifeManager(PlayerLifeManager manager)
@@ -93,7 +100,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoseLife()
+    /// <summary>
+    /// Decrements players current life count and then updates the UI
+    /// Calls game over method if life count is 0
+    /// </summary>
+    public void PlayerLoseLife()
     {
         CurrentLives--;
         if (playerLifeManager != null)
@@ -108,6 +119,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Adds a life to player UI and current life total if they have less than max lives
+    /// </summary>
     public void GainLife()
     {
         if (IsGameOver)
@@ -125,31 +139,49 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Resets players current lives to max lives
+    /// </summary>
     public void ResetLives()
     {
         CurrentLives = MaxLives;
     }
 
+    /// <summary>
+    /// Ends the game and disables time scale
+    /// Enables game over/lose screen
+    /// </summary>
     public void GameOver()
     {
         IsGameOver = true;
         Time.timeScale = 0f;
+        StopAllCoroutines();
         if (gameOverScreen != null)
         {
             gameOverScreen.SetActive(true);
         }
     }
 
+    /// <summary>
+    /// Ends the game and disables time scale
+    /// Enables victory screen
+    /// </summary>
     public void Victory()
     {
         IsGameOver = true;
         Time.timeScale = 0f;
+        StopAllCoroutines();
         if (victoryScreen != null)
         {
             victoryScreen.SetActive(true);
         }
     }
 
+    /// <summary>
+    /// Sets timescale to 1 to prevent issues with pausing
+    /// Resets gameover bool to false and player lives
+    /// Loads main menu screen
+    /// </summary>
     public void GoBackToMainMenu()
     {
         Time.timeScale = 1f;

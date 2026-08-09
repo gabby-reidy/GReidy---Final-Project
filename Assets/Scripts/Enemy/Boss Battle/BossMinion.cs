@@ -25,6 +25,9 @@ public class BossMinion : Enemy
         base.SpawnProjectile();
     }
 
+    /// <summary>
+    /// Destroys minions, to be called when the boss dies
+    /// </summary>
     private void DestroyOnBossDeath()
     {
         StopAllCoroutines();

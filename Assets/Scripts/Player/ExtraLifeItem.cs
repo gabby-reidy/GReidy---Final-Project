@@ -11,7 +11,6 @@ public class ExtraLifeItem : MonoBehaviour
                 if (GameManager.Instance.CurrentLives < GameManager.MaxLives)
                 {
                     GameManager.Instance.GainLife();
-                    //sfx?
                     Destroy(gameObject);
                 }
             }

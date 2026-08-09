@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class ExitLevel : MonoBehaviour
 {
@@ -8,10 +7,17 @@ public class ExitLevel : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    /// <summary>
+    /// Public method connected to Unity event OnLevelCleared
+    /// Enables the exit door in hierarchy
+    /// </summary>
     public void OpenExit()
     {
         gameObject.SetActive(true);
-        //sfx
+        if (AudioManager.Instance != null)
+        {
+            AudioManager.Instance.LevelExitOpenSFX();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,7 +28,10 @@ public class ExitLevel : MonoBehaviour
             {
                 AudioManager.Instance.PlayerExitLevelSFX();
             }
-            GameManager.Instance.LoadNextScene();
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.LoadNextScene();
+            }
         }
     }
 }

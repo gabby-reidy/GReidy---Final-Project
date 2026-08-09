@@ -23,7 +23,10 @@ public class PlayerProjectile : MonoBehaviour
                 AudioManager.Instance.PlayerProjectileBurstSFX();
             }
             enemyHealth = other.gameObject.GetComponent<EnemyHealth>();
-            enemyHealth.TakeDamage(projectileDamage);
+            if (enemyHealth != null)
+            {
+                enemyHealth.TakeDamage(projectileDamage);
+            }
         }
 
         if (other.gameObject.CompareTag("Obstacle"))
@@ -53,7 +56,10 @@ public class PlayerProjectile : MonoBehaviour
                 AudioManager.Instance.PlayerProjectileBurstSFX();
             }
             bossEnemy = other.gameObject.GetComponent<BossEnemy>();
-            bossEnemy.BossTakeDamage(projectileDamage);
+            if (bossEnemy != null)
+            {
+                bossEnemy.BossTakeDamage(projectileDamage);
+            }
         }
 
         if (other.gameObject.CompareTag("BossMinion"))
@@ -64,7 +70,10 @@ public class PlayerProjectile : MonoBehaviour
                 AudioManager.Instance.PlayerProjectileBurstSFX();
             }
             minionHealth = other.gameObject.GetComponent<BossMinionHealth>();
-            minionHealth.MinionTakeDamage(projectileDamage);
+            if (minionHealth != null)
+            {
+                minionHealth.MinionTakeDamage(projectileDamage);
+            }
         }
     }
 }

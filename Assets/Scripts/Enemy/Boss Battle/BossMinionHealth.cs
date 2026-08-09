@@ -5,13 +5,15 @@ public class BossMinionHealth : MonoBehaviour
     [SerializeField] private int maxHealth = 10;
     private int currentHealth;
 
-    [SerializeField] private Animator animator; // implement later
-
     private void Awake()
     {
         currentHealth = maxHealth;
     }
 
+    /// <summary>
+    /// allows player projectile to apply damage to minion
+    /// </summary>
+    /// <param name="damage"></param>
     public void MinionTakeDamage(int damage)
     {
         currentHealth -= damage;

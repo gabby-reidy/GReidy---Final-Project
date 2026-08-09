@@ -10,14 +10,6 @@ public class PlayerShooting : MonoBehaviour
     private Vector3 lookDirection;
     private float nextFireTime;
 
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);  // change to raycast if i have time at the end 
@@ -28,6 +20,14 @@ public class PlayerShooting : MonoBehaviour
         HandleFire();
     }
 
+    private void FixedUpdate()
+    {
+        Rotate();
+    }
+
+    /// <summary>
+    /// Handles input for firing projectiles and adds a timer to prevent player spamming
+    /// </summary>
     private void HandleFire()
     {
         if (Input.GetButtonDown("Fire1") && Time.time >= nextFireTime)
@@ -38,11 +38,9 @@ public class PlayerShooting : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        Rotate();
-    }
-
+    /// <summary>
+    /// Rotates the (empty) child object on the player to the mouse direction set in Update
+    /// </summary>
     private void Rotate()
     {
         if (lookDirection.sqrMagnitude < 0.001f)
@@ -54,6 +52,9 @@ public class PlayerShooting : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
     }
 
+    /// <summary>
+    /// Fires projectile prefab and sets its velocity on instantiation
+    /// </summary>
     private void FireProjectile()
     {
         if (projectilePrefab == null)
@@ -65,5 +66,4 @@ public class PlayerShooting : MonoBehaviour
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.linearVelocity = new Vector3(lookDirection.x * speed, 0f, lookDirection.z * speed);
     }
-
 }

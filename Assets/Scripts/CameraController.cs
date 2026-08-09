@@ -10,7 +10,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float maxZ;
     [SerializeField] private Camera cam;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         if (cam == null)
@@ -18,7 +17,6 @@ public class CameraController : MonoBehaviour
             cam = GetComponent<Camera>();
         }
     }
-
 
     void LateUpdate()
     {

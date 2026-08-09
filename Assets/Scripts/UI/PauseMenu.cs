@@ -2,41 +2,41 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static bool GameIsPaused = false; // if i dont end up using this anywhere else then make it private
+    private static bool isGamePaused = false;
     [SerializeField] GameObject pauseMenu;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Pause"))
         {
-            if (GameIsPaused)
+            if (isGamePaused)
             {
                 ResumeGame();
-            } else
+            } 
+            else
             {
                 PauseGame();
             }
         }
     }
 
-    public void PauseGame() // change to public for testing
+    /// <summary>
+    /// Sets pause menu UI to active, sets timescale to 0 so that nothing is happening while the game is paused
+    /// </summary>
+    public void PauseGame()
     {
         pauseMenu.SetActive(true);
         Time.timeScale = 0f;
-        GameIsPaused = true;
+        isGamePaused = true;
     }
 
+    /// <summary>
+    /// Sets pause menu to inactive, re-enables timescale to resume gameplay
+    /// </summary>
     public void ResumeGame()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
-        GameIsPaused = false;
+        isGamePaused = false;
     }
 }
