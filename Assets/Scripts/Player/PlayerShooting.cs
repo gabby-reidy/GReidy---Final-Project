@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class PlayerShooting : MonoBehaviour
 {
+    [SerializeField] private LayerMask groundLayer;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private GameObject projectilePrefab;
+    [SerializeField] private Transform firePoint;
     [SerializeField] private float speed = 2f;
     [SerializeField] private float fireRate = .5f;
 
@@ -12,10 +14,15 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);  // change to raycast if i have time at the end 
-        mouseWorld.y = transform.position.y;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
 
-        lookDirection = mouseWorld - transform.position;
+        if (Physics.Raycast(ray, out hit, Mathf.Infinity, groundLayer))
+        {
+            Vector3 mouseWorld = hit.point;
+            mouseWorld.y = transform.position.y;
+            lookDirection = mouseWorld - transform.position;
+        }
 
         HandleFire();
     }
@@ -62,7 +69,7 @@ public class PlayerShooting : MonoBehaviour
             return;
         }
 
-        GameObject projectile = Instantiate(projectilePrefab, transform.position, projectilePrefab.transform.rotation);
+        GameObject projectile = Instantiate(projectilePrefab, firePoint.position, projectilePrefab.transform.rotation);
         Rigidbody rb = projectile.GetComponent<Rigidbody>();
         rb.linearVelocity = new Vector3(lookDirection.x * speed, 0f, lookDirection.z * speed);
     }

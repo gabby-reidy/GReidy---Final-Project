@@ -2212,7 +2212,7 @@ Transform:
   m_GameObject: {fileID: 1143316875}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -0.041, y: 0, z: 0}
+  m_LocalPosition: {x: -0.041, y: 0.7, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2230,8 +2230,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea3d902887a12274db93bc042846064b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerClickToShoot
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
   rotationSpeed: 50
   projectilePrefab: {fileID: 6905452455999348512, guid: 52a5e395067d97f45a5369e4e1489089, type: 3}
+  firePoint: {fileID: 1143316876}
   speed: 2
   fireRate: 0.5
 --- !u!1 &1281801652
