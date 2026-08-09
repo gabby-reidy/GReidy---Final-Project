@@ -19,14 +19,22 @@ public class AudioManager : MonoBehaviour
     [Header("UI SFX")]
     [SerializeField] private AudioClip playButtonSFX;
     [SerializeField] private AudioClip settingsButtonSFX;
+    [SerializeField] private AudioClip playerGainLifeSFX;
 
-    [Header("Game SFX")]
+    [Header("Player SFX")]
     [SerializeField] private AudioClip playerProjectileSFX;
     [SerializeField] private AudioClip playerProjectileBurstSFX;
-    [SerializeField] private AudioClip enemyProjectileSFX;
     [SerializeField] private AudioClip loseLifeSFX;
+    [SerializeField] private AudioClip levelExitOpenSFX;
+    [SerializeField] private AudioClip playerExitLevelSFX;
+
+    [Header("Enemy SFX")]
     [SerializeField] private AudioClip[] enemyAttackSFX;
     [SerializeField] private AudioClip[] enemyDeathSFX;
+    [SerializeField] private AudioClip enemyProjectileSFX;
+
+    [Header("Boss SFX")]
+    [SerializeField] private AudioClip[] bossAttackSFX;
 
     void Awake()
     {
@@ -74,6 +82,22 @@ public class AudioManager : MonoBehaviour
     {
         int enemyDeathSFXIndex = Random.Range(0, enemyDeathSFX.Length);
         audioSource.PlayOneShot(enemyDeathSFX[enemyDeathSFXIndex], clipVolume);
+    }
+
+    public void BossAttackSFX()
+    {
+        int bossAttackSFXIndex = Random.Range(0, bossAttackSFX.Length);
+        audioSource.PlayOneShot(bossAttackSFX[bossAttackSFXIndex], clipVolume);
+    }
+
+    public void LevelExitOpenSFX()
+    {
+        audioSource.PlayOneShot(levelExitOpenSFX);
+    }
+
+    public void PlayerExitLevelSFX()
+    {
+        audioSource.PlayOneShot(playerExitLevelSFX);
     }
 
     public void ChangeSong(AudioClip newSong) // only really good for button clicks

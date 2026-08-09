@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public static int MaxLives = 3;
     public int CurrentLives = 3;
 
-    private GameObject gameOverScreen;
+    [SerializeField] private GameObject gameOverScreen; // serialze for testing
     private GameObject victoryScreen;
     private GameObject loadingScreen;
 

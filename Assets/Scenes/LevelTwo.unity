@@ -1385,6 +1385,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   CurrentLives: 3
+  gameOverScreen: {fileID: 0}
 --- !u!4 &741788164
 Transform:
   m_ObjectHideFlags: 0
@@ -2737,10 +2738,12 @@ MonoBehaviour:
   levelThreeSong: {fileID: 8300000, guid: 964dc2f6adc3ed1429058518bea9b247, type: 3}
   playButtonSFX: {fileID: 8300000, guid: 918824309fd880c4da4581b86fa58365, type: 3}
   settingsButtonSFX: {fileID: 8300000, guid: 1e2176e409b94be489518583cbeabeae, type: 3}
+  playerGainLifeSFX: {fileID: 8300000, guid: 19aa7f4be6ea5114e9f62b8c2d0e22a5, type: 3}
   playerProjectileSFX: {fileID: 8300000, guid: 9a4767f5afb0f534287c0186b6dfa51a, type: 3}
   playerProjectileBurstSFX: {fileID: 8300000, guid: 26a0bd31a4b26b2498509799337764e6, type: 3}
-  enemyProjectileSFX: {fileID: 8300000, guid: b51838bb76d0a674288d3609e4387707, type: 3}
   loseLifeSFX: {fileID: 8300000, guid: e9bb6abb46f48554e8e8eb1f4e0353f9, type: 3}
+  levelExitOpenSFX: {fileID: 8300000, guid: 15cb329db7422874cb33049192f8b39c, type: 3}
+  playerExitLevelSFX: {fileID: 8300000, guid: dab8f27ecd1cbfb4abc3ddb1d2575d0c, type: 3}
   enemyAttackSFX:
   - {fileID: 8300000, guid: a6e0f9e52eb04d54aba10208e36b3e31, type: 3}
   - {fileID: 8300000, guid: 48bb5fcf540c8c842bb2d70000ed0c57, type: 3}
@@ -2751,6 +2754,11 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 84dd1ed15845b6b418deee50b3c51995, type: 3}
   - {fileID: 8300000, guid: 326d6170a4b56ec47aee604573f6ed75, type: 3}
   - {fileID: 8300000, guid: 2adf6533e45b9784ba112968670f699e, type: 3}
+  enemyProjectileSFX: {fileID: 8300000, guid: b51838bb76d0a674288d3609e4387707, type: 3}
+  bossAttackSFX:
+  - {fileID: 8300000, guid: dc30fb47f76f82846b9df538a04bb78c, type: 3}
+  - {fileID: 8300000, guid: fcd631877a04bf846864cf74d280f241, type: 3}
+  - {fileID: 8300000, guid: cd6b94c2bb0b0ca4bae27d9b2c91f283, type: 3}
 --- !u!4 &1364808897
 Transform:
   m_ObjectHideFlags: 0

@@ -18,8 +18,10 @@ public class ExitLevel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player entered exit door");
-
+            if (AudioManager.Instance != null)
+            {
+                AudioManager.Instance.PlayerExitLevelSFX();
+            }
             GameManager.Instance.LoadNextScene();
         }
     }

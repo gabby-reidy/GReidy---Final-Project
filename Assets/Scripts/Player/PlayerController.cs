@@ -55,5 +55,13 @@ public class PlayerController : MonoBehaviour
                 GameManager.Instance.LoseLife();
             }
         }
+
+        if (collision.gameObject.CompareTag("Boss"))
+        {
+            if (GameManager.Instance != null) 
+            {
+                GameManager.Instance.LoseLife();
+            }
+        }
     }
 }

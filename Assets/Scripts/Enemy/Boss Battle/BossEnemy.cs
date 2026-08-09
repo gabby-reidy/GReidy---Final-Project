@@ -97,16 +97,21 @@ public class BossEnemy : MonoBehaviour
 
             if (projectilePrefab != null && firePoint != null && playerTransform != null)
             {
+                if (animator != null)
+                {
+                    animator.SetTrigger("Attack");
+                }
+
                 GameObject projectile = Instantiate(projectilePrefab, firePoint.position, projectilePrefab.transform.rotation);
                 BossEnemyProjectile projectileScript = projectile.GetComponent<BossEnemyProjectile>();
                 if (projectileScript != null)
                 {
                     projectileScript.SetProjectilePosition(playerTransform.position);
                 }
-
-                if (animator != null)
+                
+                if (AudioManager.Instance != null)
                 {
-                    animator.SetTrigger("Attack");
+                    AudioManager.Instance.BossAttackSFX();
                 }
             }
          
@@ -157,6 +162,7 @@ public class BossEnemy : MonoBehaviour
         {
             DieAndEndGame();
         }
+        // add sfx
     }
 
     private void DieAndEndGame()
