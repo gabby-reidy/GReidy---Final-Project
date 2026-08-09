@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - Projectile
   - Boss
+  - GameOverUI
+  - WinUI
+  - PauseUI
   layers:
   - Default
   - TransparentFX

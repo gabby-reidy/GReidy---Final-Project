@@ -156,7 +156,10 @@ public class BossEnemy : MonoBehaviour
 
         StopAllCoroutines();
         //play death sfx
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.Victory();
+        }
         Destroy(gameObject, 1f);
-        //create win screen condition in game manager
     }
 }

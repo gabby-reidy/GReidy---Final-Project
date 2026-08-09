@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public int CurrentLives = 3;
 
     [SerializeField] private GameObject gameOverScreen;
+    [SerializeField] private GameObject victoryScreen;
+
     private PlayerLifeManager playerLifeManager;
 
     private void Awake()
@@ -23,11 +25,15 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         IsGameOver = false;
         ResetLives();
+    }
+
+    public void SetGameOverScreen(GameObject screen)
+    {
+        gameOverScreen = screen;
     }
 
     /// <summary>
@@ -72,12 +78,38 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        //IsGameOver = true;
+        IsGameOver = true;
+        Time.timeScale = 0f;
+        if (gameOverScreen == null)
+        {
+            gameOverScreen = GameObject.FindWithTag("GameOverUI");
+            gameOverScreen.SetActive(true);
+        }
+        if (gameOverScreen != null)
+        {
+            gameOverScreen.SetActive(true);
+        }
+    }
+
+    public void Victory()
+    {
+        IsGameOver = true;
+        Time.timeScale = 0f;
+        if (victoryScreen != null)
+        {
+            victoryScreen.SetActive(true);
+        }
+    }
+
+    public void StartGame()
+    {
+        SceneManager.LoadScene("LevelOne");
     }
 
     public void GoBackToMainMenu()
     {
         Time.timeScale = 1f;
+        IsGameOver = false;
         ResetLives();
         SceneManager.LoadScene("MainMenu");
     }
