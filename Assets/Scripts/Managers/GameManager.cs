@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,8 +10,9 @@ public class GameManager : MonoBehaviour
     public static int MaxLives = 3;
     public int CurrentLives = 3;
 
-    [SerializeField] private GameObject gameOverScreen;
-    [SerializeField] private GameObject victoryScreen;
+    private GameObject gameOverScreen;
+    private GameObject victoryScreen;
+    private GameObject loadingScreen;
 
     private PlayerLifeManager playerLifeManager;
 
@@ -31,9 +33,44 @@ public class GameManager : MonoBehaviour
         ResetLives();
     }
 
+    public void SetLoadingScreen(GameObject screen)
+    {
+        loadingScreen = screen;
+    }
+
     public void SetGameOverScreen(GameObject screen)
     {
         gameOverScreen = screen;
+    }
+
+    public void SetVictoryScreen(GameObject screen)
+    {
+        victoryScreen = screen;
+    }
+
+    public void LoadNextScene()
+    {
+        Time.timeScale = 1f;
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        if(nextSceneIndex >= SceneManager.sceneCountInBuildSettings)
+        {
+            nextSceneIndex = 0;
+        }
+        StartCoroutine(LoadSceneAsynchronously(nextSceneIndex));
+    }
+
+    private IEnumerator LoadSceneAsynchronously(int sceneIndex)
+    {
+        if (loadingScreen != null)
+        {
+            loadingScreen.SetActive(true);
+        }
+
+        AsyncOperation operation = SceneManager.LoadSceneAsync(sceneIndex);
+        while (!operation.isDone)
+        {
+            yield return null;
+        }
     }
 
     /// <summary>
@@ -80,11 +117,6 @@ public class GameManager : MonoBehaviour
     {
         IsGameOver = true;
         Time.timeScale = 0f;
-        if (gameOverScreen == null)
-        {
-            gameOverScreen = GameObject.FindWithTag("GameOverUI");
-            gameOverScreen.SetActive(true);
-        }
         if (gameOverScreen != null)
         {
             gameOverScreen.SetActive(true);
@@ -101,16 +133,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void StartGame()
-    {
-        SceneManager.LoadScene("LevelOne");
-    }
-
     public void GoBackToMainMenu()
     {
         Time.timeScale = 1f;
         IsGameOver = false;
         ResetLives();
-        SceneManager.LoadScene("MainMenu");
+        StartCoroutine(LoadSceneAsynchronously(0));
     }
 }

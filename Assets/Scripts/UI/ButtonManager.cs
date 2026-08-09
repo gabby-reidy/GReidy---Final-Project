@@ -13,11 +13,11 @@ public class ButtonManager : MonoBehaviour
         }
     }
 
-    public void TriggerStartGame()
+    public void TriggerLoadNextScene()
     {
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.StartGame();
+            GameManager.Instance.LoadNextScene();
         }
     }
 }
