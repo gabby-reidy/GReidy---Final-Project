@@ -7,8 +7,9 @@ public class AudioManager : MonoBehaviour
 
     [SerializeField] private AudioMixer AudioMixer;
     [SerializeField] private AudioSource audioSource;
+    [SerializeField] private float clipVolume = .4f;
 
-    [Header("Music")]
+    [Header("Music")] // might get rid of
     [SerializeField] private AudioClip mainMenuSong;
     [SerializeField] private AudioClip cutSceneSong;
     [SerializeField] private AudioClip levelOneSong;
@@ -63,10 +64,16 @@ public class AudioManager : MonoBehaviour
         AudioSource.PlayClipAtPoint(playerProjectileBurstSFX, Vector3.zero);
     }
 
+    public void EnemyAttackSFX()
+    {
+        int enemyAttackSFXIndex = Random.Range(0, enemyAttackSFX.Length);
+        audioSource.PlayOneShot(enemyAttackSFX[enemyAttackSFXIndex], clipVolume);
+    }
+
     public void EnemyDeathSFX()
     {
         int enemyDeathSFXIndex = Random.Range(0, enemyDeathSFX.Length);
-        AudioSource.PlayClipAtPoint(enemyAttackSFX[enemyDeathSFXIndex], Vector3.zero);
+        audioSource.PlayOneShot(enemyDeathSFX[enemyDeathSFXIndex], clipVolume);
     }
 
     public void ChangeSong(AudioClip newSong) // only really good for button clicks

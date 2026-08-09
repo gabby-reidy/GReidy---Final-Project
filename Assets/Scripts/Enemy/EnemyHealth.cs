@@ -7,6 +7,7 @@ public class EnemyHealth : MonoBehaviour
     public int EnemyHP => enemyHP;
 
     [SerializeField] private Animator animator;
+    private float deathDelay = .4f;
 
     private void Awake()
     {
@@ -30,6 +31,7 @@ public class EnemyHealth : MonoBehaviour
         //play SFX?
         if(enemyHP <= 0)
         {
+            AudioManager.Instance.EnemyDeathSFX();
             Die();
         }
     }
@@ -37,7 +39,6 @@ public class EnemyHealth : MonoBehaviour
     private void Die()
     {
         LevelManager.AddKill();
-        AudioManager.Instance.EnemyDeathSFX();
-        Destroy(gameObject);
+        Destroy(gameObject, deathDelay);
     }
 }

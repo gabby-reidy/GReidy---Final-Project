@@ -98,6 +98,7 @@ public class Enemy : MonoBehaviour
                 animator.SetTrigger("Attack");
             }
             SpawnProjectile();
+            AudioManager.Instance.EnemyAttackSFX();
             yield return new WaitForSeconds(projectileSpawnRate);
         }
     }
