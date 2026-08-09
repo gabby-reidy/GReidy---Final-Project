@@ -2548,21 +2548,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   AudioMixer: {fileID: 24100000, guid: 505fc11a1786c53478f47cc973afede1, type: 2}
-  audioSource: {fileID: 1364808895}
+  audioSource: {fileID: 0}
   clipVolume: 0.4
-  mainMenuSong: {fileID: 0}
-  cutSceneSong: {fileID: 0}
-  levelOneSong: {fileID: 0}
-  levelTwoSong: {fileID: 0}
-  levelThreeSong: {fileID: 0}
+  mainMenuSong: {fileID: 8300000, guid: db6aa079015cdce4c856645ebdb0e5dd, type: 3}
+  cutSceneSong: {fileID: 8300000, guid: 3836715891c4c9646a3ce9f3eca77b90, type: 3}
+  levelOneSong: {fileID: 8300000, guid: 7d8e928a13d92f3409891d4966d92b1e, type: 3}
+  levelTwoSong: {fileID: 8300000, guid: a63a88370bc45ed4bbb6f1e6cfea23cf, type: 3}
+  levelThreeSong: {fileID: 8300000, guid: 964dc2f6adc3ed1429058518bea9b247, type: 3}
   playButtonSFX: {fileID: 8300000, guid: 918824309fd880c4da4581b86fa58365, type: 3}
   settingsButtonSFX: {fileID: 8300000, guid: 1e2176e409b94be489518583cbeabeae, type: 3}
   playerProjectileSFX: {fileID: 8300000, guid: 9a4767f5afb0f534287c0186b6dfa51a, type: 3}
   playerProjectileBurstSFX: {fileID: 8300000, guid: 26a0bd31a4b26b2498509799337764e6, type: 3}
-  enemyProjectileSFX: {fileID: 0}
+  enemyProjectileSFX: {fileID: 8300000, guid: b51838bb76d0a674288d3609e4387707, type: 3}
   loseLifeSFX: {fileID: 8300000, guid: e9bb6abb46f48554e8e8eb1f4e0353f9, type: 3}
-  enemyAttackSFX: []
-  enemyDeathSFX: []
+  enemyAttackSFX:
+  - {fileID: 8300000, guid: a6e0f9e52eb04d54aba10208e36b3e31, type: 3}
+  - {fileID: 8300000, guid: 48bb5fcf540c8c842bb2d70000ed0c57, type: 3}
+  - {fileID: 8300000, guid: 31630d347f247474385b8445715a6f68, type: 3}
+  - {fileID: 8300000, guid: 1c5beeb4b13f29c4395a9bac8108773b, type: 3}
+  enemyDeathSFX:
+  - {fileID: 8300000, guid: f0c32682cdbb94544a1d331730395c8f, type: 3}
+  - {fileID: 8300000, guid: 84dd1ed15845b6b418deee50b3c51995, type: 3}
+  - {fileID: 8300000, guid: 326d6170a4b56ec47aee604573f6ed75, type: 3}
+  - {fileID: 8300000, guid: 2adf6533e45b9784ba112968670f699e, type: 3}
 --- !u!4 &1364808897
 Transform:
   m_ObjectHideFlags: 0
@@ -3486,6 +3494,7 @@ GameObject:
   - component: {fileID: 1902650639}
   - component: {fileID: 1902650638}
   - component: {fileID: 1902650637}
+  - component: {fileID: 1902650640}
   m_Layer: 5
   m_Name: MainMenu Button
   m_TagString: Untagged
@@ -3555,7 +3564,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1902650638}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1902650640}
+        m_TargetAssemblyTypeName: ButtonManager, Assembly-CSharp
+        m_MethodName: TriggerGoBackToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1902650638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3594,6 +3615,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902650635}
   m_CullTransparentMesh: 1
+--- !u!114 &1902650640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902650635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79b9265366a7905479107b95fc458af7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonManager
 --- !u!1 &1910070273
 GameObject:
   m_ObjectHideFlags: 0

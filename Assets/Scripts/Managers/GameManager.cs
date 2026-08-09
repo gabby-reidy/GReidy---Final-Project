@@ -108,6 +108,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GainLife()
+    {
+        if (IsGameOver)
+        {
+            return;
+        }
+
+        if (CurrentLives < MaxLives)
+        {
+            CurrentLives++;
+            if (playerLifeManager != null)
+            {
+                playerLifeManager.UpdateLifeCount(CurrentLives);
+            }
+        }
+    }
+
     public void ResetLives()
     {
         CurrentLives = MaxLives;

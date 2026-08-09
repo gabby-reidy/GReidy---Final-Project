@@ -2843,24 +2843,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AudioManager
   AudioMixer: {fileID: 24100000, guid: 505fc11a1786c53478f47cc973afede1, type: 2}
-  audioSource: {fileID: 1364808895}
+  audioSource: {fileID: 0}
   clipVolume: 0.4
-  mainMenuSong: {fileID: 0}
-  cutSceneSong: {fileID: 0}
-  levelOneSong: {fileID: 0}
-  levelTwoSong: {fileID: 0}
-  levelThreeSong: {fileID: 0}
+  mainMenuSong: {fileID: 8300000, guid: db6aa079015cdce4c856645ebdb0e5dd, type: 3}
+  cutSceneSong: {fileID: 8300000, guid: 3836715891c4c9646a3ce9f3eca77b90, type: 3}
+  levelOneSong: {fileID: 8300000, guid: 7d8e928a13d92f3409891d4966d92b1e, type: 3}
+  levelTwoSong: {fileID: 8300000, guid: a63a88370bc45ed4bbb6f1e6cfea23cf, type: 3}
+  levelThreeSong: {fileID: 8300000, guid: 964dc2f6adc3ed1429058518bea9b247, type: 3}
   playButtonSFX: {fileID: 8300000, guid: 918824309fd880c4da4581b86fa58365, type: 3}
   settingsButtonSFX: {fileID: 8300000, guid: 1e2176e409b94be489518583cbeabeae, type: 3}
   playerProjectileSFX: {fileID: 8300000, guid: 9a4767f5afb0f534287c0186b6dfa51a, type: 3}
   playerProjectileBurstSFX: {fileID: 8300000, guid: 26a0bd31a4b26b2498509799337764e6, type: 3}
-  enemyProjectileSFX: {fileID: 0}
+  enemyProjectileSFX: {fileID: 8300000, guid: b51838bb76d0a674288d3609e4387707, type: 3}
   loseLifeSFX: {fileID: 8300000, guid: e9bb6abb46f48554e8e8eb1f4e0353f9, type: 3}
-  enemyAttackSFX: []
+  enemyAttackSFX:
+  - {fileID: 8300000, guid: a6e0f9e52eb04d54aba10208e36b3e31, type: 3}
+  - {fileID: 8300000, guid: 48bb5fcf540c8c842bb2d70000ed0c57, type: 3}
+  - {fileID: 8300000, guid: 31630d347f247474385b8445715a6f68, type: 3}
+  - {fileID: 8300000, guid: 1c5beeb4b13f29c4395a9bac8108773b, type: 3}
   enemyDeathSFX:
+  - {fileID: 8300000, guid: f0c32682cdbb94544a1d331730395c8f, type: 3}
+  - {fileID: 8300000, guid: 84dd1ed15845b6b418deee50b3c51995, type: 3}
+  - {fileID: 8300000, guid: 326d6170a4b56ec47aee604573f6ed75, type: 3}
   - {fileID: 8300000, guid: 2adf6533e45b9784ba112968670f699e, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &1364808897
 Transform:
   m_ObjectHideFlags: 0
@@ -2889,7 +2894,7 @@ GameObject:
   - component: {fileID: 1374063188}
   - component: {fileID: 1374063187}
   m_Layer: 0
-  m_Name: Exit Door Test
+  m_Name: Level Exit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2977,7 +2982,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 5a44c0495a61b1e4285714f6308cf9a8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0adec4ed98f462543865587f9a858cf2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4497,6 +4502,63 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 5729141321600424252, guid: 6c4ebedc6c7fff440854ea552880e090, type: 3}
   m_PrefabInstance: {fileID: 666846789485938015}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6264343300575350976
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 650161943138740778, guid: d6b9fddd0ab7b5a46badf9f45febb23c, type: 3}
+      propertyPath: m_Name
+      value: FishBucket
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186973104207855912, guid: d6b9fddd0ab7b5a46badf9f45febb23c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6.19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186973104207855912, guid: d6b9fddd0ab7b5a46badf9f45febb23c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186973104207855912, guid: d6b9fddd0ab7b5a46badf9f45febb23c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186973104207855912, guid: d6b9fddd0ab7b5a46badf9f45febb23c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186973104207855912, guid: d6b9fddd0ab7b5a46badf9f45febb23c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186973104207855912, guid: d6b9fddd0ab7b5a46badf9f45febb23c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186973104207855912, guid: d6b9fddd0ab7b5a46badf9f45febb23c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186973104207855912, guid: d6b9fddd0ab7b5a46badf9f45febb23c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186973104207855912, guid: d6b9fddd0ab7b5a46badf9f45febb23c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186973104207855912, guid: d6b9fddd0ab7b5a46badf9f45febb23c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d6b9fddd0ab7b5a46badf9f45febb23c, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -4519,3 +4581,4 @@ SceneRoots:
   - {fileID: 270532850}
   - {fileID: 766417840}
   - {fileID: 1374063190}
+  - {fileID: 6264343300575350976}

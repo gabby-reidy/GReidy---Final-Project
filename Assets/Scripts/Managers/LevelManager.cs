@@ -27,7 +27,6 @@ public class LevelManager : MonoBehaviour
     private void IncreaseKillCount()
     {
         currentKills++;
-        Debug.Log("current kills " + currentKills);
 
         if (currentKills >= targetKills)
         {
